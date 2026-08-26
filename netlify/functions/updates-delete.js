@@ -1,6 +1,5 @@
 // POST /.netlify/functions/updates-delete
 // body: { "id": "<update id>" }
-//
 // Protected endpoint — only signed-in Netlify Identity users can delete
 // an update. (Uses POST instead of the DELETE verb so it works reliably
 // behind Netlify's redirect/proxy layer, and so it can carry a JSON body.)
@@ -15,7 +14,13 @@ exports.handler = async (event, context) => {
       return { statusCode: 405, body: JSON.stringify({ error: "Method not allowed." }) };
     }
 
-    const { getStore } = require("@netlify/blobs");
+    const { getStore, connectLambda } = require("@netlify/blobs");
+
+    // See updates-create.js for why this line is needed: this function
+    // runs in "Lambda compatibility mode," where Blobs' siteID/token must
+    // be injected manually via connectLambda(event) before getStore() —
+    // this was the actual cause of the MissingBlobsEnvironmentError.
+    connectLambda(event);
 
     const user = context.clientContext && context.clientContext.user;
     if (!user) {
