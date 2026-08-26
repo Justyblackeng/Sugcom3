@@ -1,5 +1,4 @@
 // POST /.netlify/functions/updates-create
-//
 // Protected endpoint — only signed-in Netlify Identity users (SUG officers)
 // can publish updates. The browser must send the user's Identity access
 // token in the request, e.g.:
@@ -37,8 +36,16 @@ exports.handler = async (event, context) => {
     // the top of the file — so if @netlify/blobs is missing or fails to
     // load, that failure is caught and reported too, instead of crashing
     // the function before handler() even runs.
-    const { getStore } = require("@netlify/blobs");
+    const { getStore, connectLambda } = require("@netlify/blobs");
     const crypto = require("crypto");
+
+    // This function uses the classic `exports.handler = async (event, context)`
+    // style, which Netlify runs in "Lambda compatibility mode." In that
+    // mode, Blobs' siteID/token don't get auto-injected the normal way —
+    // connectLambda(event) does that manually. It must be called before
+    // getStore() below. This was the actual cause of the
+    // MissingBlobsEnvironmentError.
+    connectLambda(event);
 
     // ── Auth check ──────────────────────────────────────────────
     const user = context.clientContext && context.clientContext.user;
@@ -136,3 +143,4 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
