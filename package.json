@@ -1,0 +1,9 @@
+{
+  "name": "sug-sumas-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless backend (Netlify Functions + Netlify Blobs) for the SUG SUMAS website's Updates system.",
+  "dependencies": {
+    "@netlify/blobs": "^7.5.0"
+  }
+}

@@ -1,0 +1,11 @@
+[build]
+  # The folder that gets deployed as your live site.
+  # If you keep the HTML file at the project root, "." is correct.
+  publish = "."
+
+  # Where Netlify looks for your serverless backend functions.
+  functions = "netlify/functions"
+
+[functions]
+  # Bundle each function with its dependencies automatically.
+  node_bundler = "esbuild"
