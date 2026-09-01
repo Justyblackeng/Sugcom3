@@ -9,3 +9,7 @@
 [functions]
   # Bundle each function with its dependencies automatically.
   node_bundler = "esbuild"
+  
+[[edge_functions]]
+  path = "/"
+  function = "update-og"
