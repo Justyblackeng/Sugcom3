@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STUDENT'S UNION GOVERNMENT - State University of Medical and Applied Sciences,Igbo-eno</title>
+  <link rel="icon" type="image/png" href="IMG-20260411-WA0061-removebg-preview.png"/>
+<link rel="apple-touch-icon" href="IMG-20260411-WA0061-removebg-preview.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SUG SUMAS"/>
+<meta property="og:title" content="Student's Union Government - State University of Medical and Applied Sciences, Igbo-Eno"/>
+<meta property="og:description" content="The official voice of students at SUMAS — advocating welfare, advancing rights, and building a thriving campus community."/>
+<meta property="og:image" content="https://sugcom4.netlify.app/IMG-20260411-WA0061-removebg-preview.png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:url" content="https://sugcom4.netlify.app/"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Student's Union Government - SUMAS"/>
+<meta name="twitter:description" content="The official voice of students at SUMAS."/>
+<meta name="twitter:image" content="https://sugcom4.netlify.app/IMG-20260411-WA0061-removebg-preview.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:     #0D9BAF;
+      --teal-lt:  #E0F5F8;
+      --navy:     #1A3F7C;
+      --navy-lt:  #EEF2F9; 
+      --green:    #12A36B;
+      --green-lt: #E5F7F0;
+      --orange:   #E67E22;
+      --white:    #ffffff;
+      --bg:       #ffffff;
+      --surface:  #F7FAFB;
+      --text:     #1C2B3A;
+      --muted:    #5A7A8A;
+      --border:   #D8EEF2;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+    #main-content { display: flex; flex-direction: column; flex: 1 0 auto; }
+    .stats-bar, footer { flex-shrink: 0; }
+
+    /* ─── CAMPUS BANNER ──────────────────────── */
+    .campus-banner-wrap {
+      position: relative; width: 100%; height: 340px; overflow: hidden;
+      margin-top: 66px;
+    }
+    .campus-banner-img {
+      width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85);
+      animation: bannerKenBurns 26s ease-in-out infinite;
+      transform-origin: 50% 45%;
+    }
+    /* Students photo pinned to the left of the aerial banner, feet planted on
+       the same ground line as the banner's bottom edge, reaching up through
+       the middle of the shot — kept as a subtle background layer, not a
+       sticker on top, and boxed to the left third so it never runs into the
+       "WELCOME..." headline text on the right. */
+    .campus-banner-photo {
+      position: absolute; left: 1%; bottom: 0; z-index: 2;
+      height: 58%; max-width: 26%; width: auto;
+      object-fit: contain; object-position: left bottom;
+      opacity: 0.55;
+      -webkit-mask-image:
+        linear-gradient(to top, #000 60%, transparent 100%),
+        linear-gradient(to right, #000 70%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to top, #000 60%, transparent 100%),
+        linear-gradient(to right, #000 70%, transparent 100%);
+      mask-composite: intersect;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.4));
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .campus-banner-photo { max-width: 36%; height: 55%; opacity: 0.5; }
+    }
+    @media (min-width: 1024px) {
+      .campus-banner-photo { max-width: 20%; height: 56%; }
+    }
+    @keyframes bannerKenBurns {
+      0%   { transform: scale(1.02) translate(0%, 0%); }
+      25%  { transform: scale(1.08) translate(-1.6%, -0.8%); }
+      50%  { transform: scale(1.13) translate(-2.6%, 0.6%); }
+      75%  { transform: scale(1.08) translate(-1%, 1.2%); }
+      100% { transform: scale(1.02) translate(0%, 0%); }
+    }
+    /* Drifting light sweep — reads as sunlight/cloud-shadow passing over the campus */
+    .banner-sheen {
+      position: absolute; inset: -20% -60%; z-index: 1; pointer-events: none;
+      background: linear-gradient(75deg,
+        transparent 40%,
+        rgba(255,255,255,0.16) 48%,
+        rgba(255,255,255,0.28) 50%,
+        rgba(255,255,255,0.16) 52%,
+        transparent 60%);
+      animation: sheenSweep 9s ease-in-out infinite;
+    }
+    @keyframes sheenSweep {
+      0%   { transform: translateX(-35%); }
+      45%  { transform: translateX(35%); }
+      100% { transform: translateX(35%); }
+    }
+    /* Soft drifting cloud shadows for extra depth-of-motion */
+    .banner-clouds {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: multiply;
+      background:
+        radial-gradient(ellipse 26% 40% at 15% 30%, rgba(10,20,35,0.16), transparent 70%),
+        radial-gradient(ellipse 30% 45% at 80% 60%, rgba(10,20,35,0.13), transparent 70%);
+      animation: cloudsDrift 20s ease-in-out infinite alternate;
+    }
+    @keyframes cloudsDrift {
+      0%   { transform: translateX(-4%) translateY(0%); }
+      100% { transform: translateX(4%) translateY(2%); }
+    }
+    .campus-banner-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(10,14,26,0.70) 0%, transparent 100%);
+      padding: 1.2rem 2rem;
+      color: rgba(255,255,255,0.92); font-size: 0.66rem;
+      letter-spacing: 0.08em; text-transform: uppercase; font-weight: 800;
+      z-index: 3;
+    }
+    @media (max-width: 768px) {
+      .campus-banner-overlay { font-size: 0.58rem; padding: 0.9rem 1.2rem; }
+    }
+
+    /* ─── SCHOOL CREST (flipping logo) ──────────
+       Used both above the banner text and beside the SUG logo on the
+       home hero. Always sits in a white circular placeholder. */
+    .school-crest-circle {
+      background: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+    }
+    .school-crest-circle img { width: 82%; height: 82%; object-fit: contain; }
+    .school-crest-flip { transform-style: preserve-3d; }
+    @media (prefers-reduced-motion: reduce) { .banner-logo-slot > * { animation: none !important; opacity: 1 !important; } }
+
+    .banner-crest-wrap { perspective: 700px; margin-bottom: 0.5rem; }
+    .banner-crest-wrap .school-crest-circle {
+      width: 62px; height: 62px; border: 3px solid #fff;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.4);
+    }
+    /* Three logos share one spot and take turns: school crest fades in/out,
+       then the SUG logo, then the NANS logo, then it repeats. */
+    .banner-logo-slot { position: relative; width: 62px; height: 62px; }
+    .banner-logo-slot .school-crest-circle { position: absolute; inset: 0; }
+    .banner-logo-slot .crest-a { animation: bannerLogoCycleA 12s ease-in-out infinite; }
+    .banner-logo-slot .crest-b { animation: bannerLogoCycleB 12s ease-in-out infinite; }
+    .banner-logo-slot .crest-c { animation: bannerLogoCycleC 12s ease-in-out infinite; }
+    @keyframes bannerLogoCycleA {
+      0%   { opacity: 0; transform: scale(0.7); }
+      3%   { opacity: 1; transform: scale(1); }
+      28%  { opacity: 1; transform: scale(1); }
+      33%  { opacity: 0; transform: scale(0.7); }
+      100% { opacity: 0; transform: scale(0.7); }
+    }
+    @keyframes bannerLogoCycleB {
+      0%   { opacity: 0; transform: scale(0.7); }
+      33%  { opacity: 0; transform: scale(0.7); }
+      36%  { opacity: 1; transform: scale(1); }
+      61%  { opacity: 1; transform: scale(1); }
+      66%  { opacity: 0; transform: scale(0.7); }
+      100% { opacity: 0; transform: scale(0.7); }
+    }
+    @keyframes bannerLogoCycleC {
+      0%   { opacity: 0; transform: scale(0.7); }
+      66%  { opacity: 0; transform: scale(0.7); }
+      69%  { opacity: 1; transform: scale(1); }
+      94%  { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.7); }
+    }
+    @media (max-width: 480px) {
+      .banner-crest-wrap .school-crest-circle { width: 50px; height: 50px; }
+      .banner-logo-slot { width: 50px; height: 50px; }
+    }
+
+    /* ─── BANNER MOTION OVERLAY (animated welcome text) ── */
+    .campus-banner-motion {
+      position: absolute; inset: 0; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 1rem 1.5rem; gap: 0.6rem;
+      background: linear-gradient(180deg, rgba(10,20,35,0.35) 0%, rgba(10,20,35,0.15) 45%, rgba(10,14,26,0.55) 100%);
+    }
+    .banner-welcome {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.3rem, 4.2vw, 2.6rem); letter-spacing: 0.03em;
+      color: #fff; text-transform: uppercase; line-height: 1.15;
+      background: linear-gradient(100deg, #ffffff 20%, #6FE3F2 45%, #ffffff 65%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 4px 26px rgba(0,0,0,0.35);
+      opacity: 0; animation: welcomeReveal 1.1s ease forwards 0.3s, shimmerText 5s linear infinite 1.4s;
+    }
+    .banner-chant {
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: clamp(0.85rem, 2.2vw, 1.15rem); letter-spacing: 0.16em;
+      color: var(--teal-lt); text-transform: uppercase;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+      opacity: 0; animation: chantReveal 1s ease forwards 1s, chantPulse 2.6s ease-in-out infinite 2s;
+    }
+    .banner-underline {
+      width: 0; height: 3px; margin-top: 0.2rem; border-radius: 3px;
+      background: linear-gradient(90deg, var(--teal), #ffffff, var(--teal));
+      animation: underlineGrow 1.2s ease forwards 0.9s;
+    }
+    @keyframes welcomeReveal {
+      0%   { opacity: 0; transform: translateY(22px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes shimmerText {
+      0%   { background-position: 250% 0; }
+      100% { background-position: -50% 0; }
+    }
+    @keyframes chantReveal {
+      0%   { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes chantPulse {
+      0%, 100% { opacity: 0.85; letter-spacing: 0.16em; }
+      50%      { opacity: 1;    letter-spacing: 0.22em; }
+    }
+    @keyframes underlineGrow {
+      0%   { width: 0; }
+      100% { width: min(70%, 340px); }
+    }
+    @media (max-width: 480px) {
+      .banner-welcome { font-size: 1.15rem; }
+      .banner-chant { font-size: 0.75rem; letter-spacing: 0.1em; }
+    }
+
+    /* ─── NAV ── */
+    nav {
+      position: fixed; top: -66px; left: 0; width: 100%; z-index: 999;
+      background: #ffffff;
+      border-bottom: 2px solid var(--teal);
+      box-shadow: 0 2px 16px rgba(13,155,175,0.10);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 66px;
+      animation: navDrop 0.55s cubic-bezier(0.2,0.8,0.2,1) forwards;
+    }
+    /* Uses `top` (not `transform`) to slide in — a transform on nav would
+       make it the containing block for the mobile menu's position:fixed
+       panel below, collapsing that panel to the nav bar's own 66px height
+       instead of the full screen. */
+    @keyframes navDrop {
+      0%   { top: -66px; }
+      100% { top: 0; }
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-img {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid var(--teal); background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; color: #fff;
+      font-size: 0.68rem; text-align: center; line-height: 1.1; overflow: hidden;
+    }
+    .nav-logo-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .nav-brand { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--navy); font-size: 1rem; line-height: 1.2; }
+    .nav-brand span { color: var(--teal); display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 0.2rem; align-items: center; }
+    .nav-links a { position: relative; color: var(--navy); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 6px; transition: all 0.2s; opacity: 0; animation: navLinkIn 0.5s ease forwards; }
+    .nav-links a:nth-child(1) { animation-delay: 0.45s; }
+    .nav-links a:nth-child(2) { animation-delay: 0.52s; }
+    .nav-links a:nth-child(3) { animation-delay: 0.59s; }
+    .nav-links a:nth-child(4) { animation-delay: 0.66s; }
+    .nav-links a:nth-child(5) { animation-delay: 0.73s; }
+    .nav-links a:nth-child(n+6) { animation-delay: 0.8s; }
+    @keyframes navLinkIn {
+      0%   { opacity: 0; transform: translateY(-6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0.9rem; right: 0.9rem; bottom: 0.28rem;
+      height: 2px; background: var(--teal); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.28s ease;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-links a:hover { color: var(--teal); background: var(--teal-lt); }
+    .nav-links a.active { color: var(--teal); background: var(--teal-lt); font-weight: 700; border-bottom: 2px solid var(--teal); }
+    .nav-links .btn-nav { background: var(--teal); color: #fff; font-weight: 600; padding: 0.5rem 1.2rem; border-radius: 8px; }
+    .nav-links .btn-nav:hover { background: var(--navy); color: #fff; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--navy); font-size: 1.5rem; }
+
+    /* ─── UPDATES NAV DROPDOWN (News / Opportunities) ──── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger {
+      position: relative; color: var(--navy); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 6px;
+      transition: all 0.2s; opacity: 0; animation: navLinkIn 0.5s ease forwards; animation-delay: 0.52s;
+      background: none; border: none; cursor: pointer; font-family: inherit;
+      display: inline-flex; align-items: center; gap: 0.3rem;
+    }
+    .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger { color: var(--teal); background: var(--teal-lt); }
+    .nav-dropdown.open .nav-dropdown-trigger { font-weight: 700; }
+    .nav-dropdown-trigger.active { color: var(--teal); background: var(--teal-lt); font-weight: 700; border-bottom: 2px solid var(--teal); }
+    .nav-dropdown-arrow { font-size: 0.65em; transition: transform 0.2s ease; }
+    .nav-dropdown.open .nav-dropdown-arrow { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 8px); left: 0; min-width: 190px;
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(13,155,175,0.18); padding: 0.4rem;
+      display: none; flex-direction: column; gap: 0.15rem; z-index: 999;
+    }
+    .nav-dropdown.open .nav-dropdown-menu { display: flex; }
+    .nav-dropdown-menu a {
+      color: var(--navy); text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      padding: 0.6rem 0.75rem; border-radius: 6px; transition: all 0.2s;
+      display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover { color: var(--teal); background: var(--teal-lt); }
+
+    /* ─── HERO ─────── */
+    #home {
+      background: #ffffff;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 1rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    #home::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(13,155,175,0.07) 0%, transparent 70%);
+    }
+    /* Photo sits to the left, absolutely positioned, hero content stays centered as before */
+    .hero-flex {
+      position: relative; width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-photo-col {
+      position: absolute; left: 2vw; top: 4px;
+      width: 340px;
+      z-index: 0;
+    }
+    .hero-photo-col img {
+      width: 100%; height: auto; display: block;
+      filter: drop-shadow(0 12px 28px rgba(13,155,175,0.18));
+    }
+    .hero-text-col {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+    }
+    @media (max-width: 1180px) {
+      .hero-photo-col { display: none; }
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(50px);
+      pointer-events: none; z-index: 0; opacity: 0.5;
+      animation: blobDrift 16s ease-in-out infinite alternate;
+    }
+    .hero-blob.b1 { width: 220px; height: 220px; top: -40px; left: -60px; background: rgba(13,155,175,0.18); }
+    .hero-blob.b2 { width: 260px; height: 260px; top: 60px; right: -80px; background: rgba(26,63,124,0.14); animation-delay: 3s; }
+    .hero-blob.b3 { width: 160px; height: 160px; bottom: -30px; left: 30%; background: rgba(18,163,107,0.14); animation-delay: 6s; }
+    @keyframes blobDrift {
+      0%   { transform: translate(0,0) scale(1); }
+      100% { transform: translate(18px,-14px) scale(1.12); }
+    }
+    .hero-badge {
+      display: inline-block; background: var(--teal-lt);
+      border: 1px solid rgba(13,155,175,0.35); color: var(--teal);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.45rem 1.1rem; border-radius: 999px; margin-bottom: 1.5rem;
+      animation: badgePulse 2.8s ease-in-out infinite, heroEnter 0.7s ease forwards 0.1s;
+      opacity: 0;
+    }
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(13,155,175,0.25); }
+      50%      { box-shadow: 0 0 0 7px rgba(13,155,175,0); }
+    }
+    @keyframes heroEnter {
+      0%   { opacity: 0; transform: translateY(18px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero-logo-row { animation: heroEnter 0.7s ease forwards 0.28s, logoFloat 4.5s ease-in-out infinite 1s; opacity: 0; }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+    h1 { animation: heroEnter 0.7s ease forwards 0.46s; opacity: 0; }
+    .hero-sub { animation: heroEnter 0.7s ease forwards 0.64s; opacity: 0; }
+    .hero-stats { animation: heroEnter 0.7s ease forwards 0.82s; opacity: 0; }
+    .hero-logo-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: 1.8rem; position: relative; z-index: 1;
+      perspective: 800px;
+    }
+    .hero-logo-wrap {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 3px solid var(--teal); margin: 0;
+      overflow: hidden; background: var(--teal-lt);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 8px rgba(13,155,175,0.08), 0 8px 32px rgba(13,155,175,0.18);
+      position: relative; z-index: 1;
+    }
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-crest { width: 110px; height: 110px; border: 3px solid var(--teal); margin-left: -18px; position: relative; z-index: 0; }
+    @media (max-width: 480px) {
+      .hero-logo-wrap, .hero-crest { width: 82px; height: 82px; }
+      .hero-crest { margin-left: -12px; }
+      .pillars { grid-template-columns: 1fr; }
+    }
+    .hero-logo-placeholder { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--navy); font-size: 1rem; text-align: center; line-height: 1.3; padding: 1rem; }
+    h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2.4rem); color: var(--navy); line-height: 1.15; position: relative; z-index: 1; max-width: 820px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .hero-sub { color: var(--muted); font-size: clamp(0.95rem, 2vw, 1.1rem); max-width: 560px; line-height: 1.75; margin: 1.4rem auto 2.2rem; position: relative; z-index: 1; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 10px; transition: all 0.25s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,155,175,0.3); }
+    .btn-outline { background: #fff; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-green:hover { background: #0f8f5c; transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 3rem; position: relative; z-index: 1;
+    }
+    .hero-stat { text-align: center; opacity: 0; animation: heroEnter 0.6s ease forwards; }
+    .stats-bar .hero-stat:nth-child(1) { animation-delay: 0.05s; }
+    .stats-bar .hero-stat:nth-child(2) { animation-delay: 0.15s; }
+    .stats-bar .hero-stat:nth-child(3) { animation-delay: 0.25s; }
+    .stats-bar .hero-stat:nth-child(4) { animation-delay: 0.35s; }
+    .hero-stat strong { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--teal); display: block; }
+    .hero-stat span { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── TICKER ── */
+    .ticker-strip {
+      background: var(--navy); color: #fff;
+      padding: 0.6rem 0; overflow: hidden; white-space: nowrap;
+    }
+    .ticker-inner { display: inline-block; animation: ticker 30s linear infinite; }
+    .ticker-inner:hover { animation-play-state: paused; }
+    .ticker-item { display: inline-block; margin-right: 4rem; font-size: 0.85rem; font-weight: 500; }
+    .ticker-item::before { content: '📢 '; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION SHARED ──────────────────────── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--teal);
+      background: var(--teal-lt); border: 1px solid rgba(13,155,175,0.3);
+      padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 1rem;
+    }
+    h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--navy); line-height: 1.2; margin-bottom: 1rem; }
+    .section-desc { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 640px; }
+
+    /* ─── UPDATES ──────────────────────────────── */
+    #updates { background: #ffffff; padding-top: 4rem; }
+    .updates-header { position: relative; margin-bottom: 2rem; }
+
+    .update-featured {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; border-radius: 16px;
+      overflow: hidden; box-shadow: 0 4px 24px rgba(26,63,124,0.09);
+      border: 1px solid var(--border); margin-bottom: 1.5rem;
+      background: #ffffff; min-height: 280px;
+    }
+    .update-featured-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      position: relative; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: rgba(255,255,255,0.15);
+    }
+    /* When a real image is attached, drop the gradient/icon placeholder
+       entirely and let the image display at its own natural size and
+       aspect ratio — no cropping, no tint, no forced box. */
+    .update-featured-banner.has-image { background: none; display: block; font-size: 0; }
+    .update-featured-banner img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .update-featured-banner.has-image img { position: static; width: 100%; height: auto; object-fit: contain; display: block; }
+    .update-featured-tag {
+      position: absolute; top: 1rem; left: 1rem;
+      font-size: 0.7rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem; border-radius: 999px; color: #fff;
+    }
+    .update-featured-body { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+    .update-featured-body .update-date { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .update-featured-body .update-title { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--navy); font-size: clamp(1.1rem, 2.5vw, 1.5rem); line-height: 1.3; margin-bottom: 0.8rem; }
+    .update-featured-body .update-excerpt {
+      font-size: 0.88rem; color: var(--muted); line-height: 1.7;
+      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .update-featured-body .update-link { font-size: 0.85rem; color: var(--teal); font-weight: 600; text-decoration: none; display: inline-block; margin-top: 1rem; }
+
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+
+    /* ─── HOME SPOTLIGHT (auto-rotating updates strip) ──── */
+    .home-spotlight { max-width: 1100px; margin: 2.2rem auto 2.5rem; padding: 0 2rem; }
+    .home-spotlight-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+    .home-spotlight-head h3 { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--navy); font-size: 1.25rem; }
+    .home-spotlight-head a { font-size: 0.85rem; color: var(--teal); font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .spotlight-viewport { overflow: hidden; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); }
+    .spotlight-track { display: flex; transition: transform 0.7s cubic-bezier(.65,0,.35,1); }
+    .spotlight-slide { flex: 0 0 100%; display: flex; align-items: center; gap: 1.2rem; padding: 1.3rem 1.5rem; min-height: 128px; }
+    .spotlight-icon { flex-shrink: 0; width: 60px; height: 60px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--teal)); display: flex; align-items: center; justify-content: center; font-size: 1.7rem; overflow: hidden; }
+    .spotlight-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .spotlight-text { min-width: 0; }
+    .spotlight-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; padding: 0.2rem 0.55rem; border-radius: 99px; margin-bottom: 0.4rem; }
+    .spotlight-title { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--navy); font-size: 0.98rem; margin-bottom: 0.25rem; }
+    .spotlight-excerpt { font-size: 0.82rem; color: var(--muted); line-height: 1.5; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .spotlight-dots { display: flex; gap: 0.4rem; justify-content: center; margin-top: 0.8rem; }
+    .spotlight-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: background 0.3s, width 0.3s; cursor: pointer; }
+    .spotlight-dots span.active { background: var(--teal); width: 18px; border-radius: 4px; }
+    @media (max-width: 640px) {
+      .spotlight-slide { flex-direction: column; align-items: flex-start; text-align: left; }
+    }
+    .update-card {
+      background: #ffffff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(26,63,124,0.07); transition: all 0.3s;
+      border: 1px solid var(--border);
+    }
+    .update-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(13,155,175,0.15); border-color: var(--teal); }
+    .update-banner {
+      height: 200px; background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; color: rgba(255,255,255,0.2); position: relative; overflow: hidden;
+    }
+    /* When a real image is attached, drop the fixed 200px box and gradient
+       entirely — the image displays at its own natural size and aspect
+       ratio, uncropped, with nothing behind it. */
+    .update-banner.has-image { height: auto; background: none; }
+    .update-banner img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .update-banner.has-image img { height: auto; object-fit: contain; display: block; }
+    .update-card:hover .update-banner img { transform: scale(1.08); }
+    .update-tag {
+      position: absolute; top: 0.7rem; left: 0.7rem;
+      font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em;
+      padding: 0.22rem 0.65rem; border-radius: 999px; color: #fff;
+    }
+    .tag-event { background: var(--teal); }
+    .tag-announcement { background: var(--navy); }
+    .tag-achievement { background: var(--green); }
+    .tag-notice { background: var(--orange); }
+    .update-body { padding: 1.1rem; }
+    .update-body .update-excerpt {
+      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .update-date { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .update-title { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--navy); font-size: 0.95rem; line-height: 1.3; margin-bottom: 0.4rem; }
+    .update-excerpt { font-size: 0.81rem; color: var(--muted); line-height: 1.6; }
+    .update-link { font-size: 0.8rem; color: var(--teal); font-weight: 600; text-decoration: none; display: inline-block; margin-top: 0.7rem; }
+    .update-link:hover { color: var(--navy); }
+
+    /* ─── SHARE / DELETE ACTIONS ────────────────── */
+    .update-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
+    .update-action-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.76rem; font-weight: 600; font-family: inherit;
+      padding: 0.35rem 0.7rem; border-radius: 7px;
+      border: 1px solid var(--border); background: #fff;
+      color: var(--muted); cursor: pointer; transition: all 0.2s;
+    }
+    .update-action-btn:hover { border-color: var(--teal); color: var(--teal); }
+    /* Delete is only ever shown to a logged-in officer — body.admin-mode is
+       toggled by showAdminPanel()/showAdminGate() below. */
+    .update-action-btn.danger { display: none; }
+    .admin-mode .update-action-btn.danger {
+      display: inline-flex; border-color: rgba(229,62,62,0.35); color: #e53e3e;
+    }
+    .admin-mode .update-action-btn.danger:hover { background: rgba(229,62,62,0.08); border-color: #e53e3e; }
+    .update-highlight { animation: updateHighlightPulse 1.8s ease 2; border-radius: 12px; }
+    @keyframes updateHighlightPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(13,155,175,0); }
+      50% { box-shadow: 0 0 0 6px rgba(13,155,175,0.25); }
+    }
+    .share-toast {
+      position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px);
+      background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600;
+      padding: 0.7rem 1.2rem; border-radius: 99px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      z-index: 3000; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s;
+    }
+    .share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ─── LEADERSHIP ───── */
+    #leadership { background: var(--surface); }
+    #leadership h2 { color: var(--navy); }
+    #leadership .section-desc { color: var(--muted); }
+    .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 2rem 0 2.5rem; }
+    .tab-btn {
+      background: #fff; color: var(--navy);
+      border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 0.6rem 1.3rem; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    @media (max-width: 1024px) { .tab-panel.active { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .tab-panel.active { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .tab-panel.active { grid-template-columns: 1fr; } }
+
+    .person-card {
+      background: #ffffff; border: 1.5px solid var(--border);
+      border-radius: 14px; overflow: hidden; transition: all 0.3s; cursor: pointer;
+    }
+    .person-card:hover { transform: translateY(-4px); border-color: var(--teal); box-shadow: 0 10px 32px rgba(13,155,175,0.14); }
+    .person-card.exec { border-top: 3px solid var(--teal); }
+    .person-card.minister { border-top: 3px solid var(--green); }
+    .person-card.vacant { border-top: 3px dashed #C7D6DC; }
+    .person-card.vacant .person-photo { background: var(--surface); }
+    .person-card.vacant .person-photo svg { opacity: 0.4; }
+    .person-card.vacant .person-name { color: var(--muted); font-style: italic; }
+    .vacant-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em;
+      color: var(--orange); background: #FDF1E4; border: 1px solid #F3D9BB;
+      border-radius: 20px; padding: 0.15rem 0.6rem; margin-bottom: 0.35rem;
+    }
+    .person-photo {
+      width: 100%; height: 200px; background: var(--teal-lt);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--teal);
+      overflow: hidden;
+    }
+    /* object-fit: contain ensures the WHOLE photo (including the head) is always
+       visible, never cropped by the frame — the gradient shows through as
+       letterbox padding if the photo's proportions differ from the frame. */
+    .person-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; transition: transform 0.45s ease; }
+    .person-card:hover .person-photo img { transform: scale(1.06); }
+    .person-card-social {
+      display: flex; gap: 0.45rem; margin-top: 0.7rem; padding-top: 0.65rem;
+      border-top: 1px solid var(--border);
+    }
+    .person-social-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+    .person-social-btn:hover { transform: translateY(-2px) scale(1.12); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+    .person-social-btn.wa { background: #25D366; color: #fff; }
+    .person-social-btn.fb { background: #1877F2; color: #fff; }
+    .person-body { padding: 1rem 1.1rem 1.2rem; }
+    .person-role { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.3rem; }
+    .person-card.exec .person-role { color: var(--teal); }
+    .person-card.minister .person-role { color: var(--green); }
+    .person-name { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--navy); font-size: 0.97rem; margin-bottom: 0.35rem; }
+    .person-dept { font-size: 0.75rem; color: var(--muted); }
+    .person-more { font-size: 0.76rem; color: var(--teal); margin-top: 0.55rem; display: block; }
+
+    /* ─── MODAL ───── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(10,14,26,0.55); backdrop-filter: blur(6px);
+      z-index: 2000; display: none; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #ffffff; border: 1.5px solid var(--border); border-radius: 20px;
+      max-width: 460px; width: 100%; overflow: hidden; box-shadow: 0 24px 64px rgba(26,63,124,0.18); position: relative;
+    }
+    .modal-photo {
+      width: 100%; height: 210px; background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: rgba(255,255,255,0.25);
+    }
+    .modal-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+    .modal-body { padding: 1.8rem; }
+    .modal-role { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal); font-weight: 700; }
+    .modal-name { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--navy); font-size: 1.45rem; margin: 0.4rem 0; }
+    .modal-bio { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-top: 0.7rem; }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem; background: var(--navy);
+      border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%;
+      cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ─── UPDATE DETAILS MODAL (opened via "Read more →") ──── */
+    .update-modal-box {
+      background: #ffffff; border: 1.5px solid var(--border); border-radius: 20px;
+      max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(26,63,124,0.18); position: relative;
+    }
+    .update-modal-banner {
+      width: 100%; min-height: 160px; max-height: 46vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; color: rgba(255,255,255,0.25); overflow: hidden;
+    }
+    .update-modal-banner img { width: 100%; height: 100%; object-fit: contain; }
+    .update-modal-body { padding: 1.8rem; }
+    .update-modal-body .update-featured-tag { position: static; display: inline-block; margin-bottom: 0.8rem; }
+    .update-modal-body .update-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .update-modal-body .update-title { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--navy); font-size: 1.35rem; line-height: 1.3; margin-bottom: 1rem; }
+    .update-modal-body .update-excerpt { color: var(--muted); font-size: 0.9rem; line-height: 1.75; white-space: pre-wrap; }
+    .update-excerpt a { color: var(--teal); text-decoration: underline; word-break: break-word; }
+    .update-video-embed { position: relative; width: 100%; padding-top: 56.25%; margin: 1rem 0; border-radius: 10px; overflow: hidden; background: #000; }
+    .update-video-embed:empty { display: none; margin: 0; }
+    .update-video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .update-modal-body .update-actions { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
+
+    /* ─── POST UPDATE FORM ──── */
+    #post-update { background: var(--teal-lt); }
+    .form-card {
+      background: #ffffff; border-radius: 20px; padding: 2.5rem;
+      border: 1.5px solid var(--border); box-shadow: 0 4px 24px rgba(13,155,175,0.09);
+      max-width: 680px; margin: 0 auto;
+    }
+    .form-card h3 { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--navy); font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .form-card > p { color: var(--muted); font-size: 0.86rem; margin-bottom: 1.8rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 8px; color: var(--text); padding: 0.72rem 1rem; font-size: 0.88rem;
+      font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--teal); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: #fff; color: var(--text); }
+    .form-img-preview {
+      width: 100%; height: 200px; background: var(--teal-lt);
+      border: 2px dashed rgba(13,155,175,0.4); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); font-size: 0.83rem; cursor: pointer; overflow: hidden; margin-top: 0.4rem;
+      transition: height 0.2s ease;
+    }
+    /* Once an image is chosen, drop the fixed 200px box and let the frame
+       take the image's own aspect ratio instead — no more letterboxing. */
+    .form-img-preview.has-image {
+      height: auto; max-height: 420px; border-style: solid; background: #000;
+    }
+    .form-img-preview img { width: 100%; height: 100%; object-fit: contain; }
+    .form-img-preview.has-image img { height: auto; max-height: 420px; object-fit: contain; display: block; }
+    .form-submit { width: 100%; padding: 0.9rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: 'Syne', sans-serif; transition: all 0.2s; margin-top: 0.5rem; }
+    .form-submit:hover { background: var(--navy); transform: translateY(-1px); }
+    .voiceout-item { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; background: #fff; }
+    .voiceout-item-head { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+    .voiceout-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; border-radius: 99px; background: var(--teal-lt); color: var(--teal); }
+    .voiceout-meta { font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.6rem; }
+    .voiceout-message { font-size: 0.9rem; color: var(--navy); white-space: pre-wrap; margin-bottom: 0.6rem; }
+    .voiceout-delete-btn { font-size: 0.75rem; font-weight: 600; color: #c0392b; background: none; border: 1px solid #c0392b; border-radius: 6px; padding: 0.3rem 0.7rem; cursor: pointer; }
+    .voiceout-delete-btn:hover { background: #c0392b; color: #fff; }
+    .success-msg { display: none; background: var(--green-lt); border: 1px solid var(--green); color: var(--green); border-radius: 8px; padding: 0.9rem 1rem; font-size: 0.86rem; margin-top: 1rem; }
+
+    /* ─── ABOUT ───── */
+    #about { background: #ffffff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
+    .about-visual { background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); border-radius: 16px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 10px; padding: 1rem 1.2rem; color: #fff; }
+    .about-pill strong { font-family: 'Syne', sans-serif; display: block; font-size: 1.05rem; }
+    .about-pill span { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+    .pillar { background: var(--surface); border-radius: 10px; padding: 1rem; border-left: 3px solid var(--teal); border: 1px solid var(--border); border-left: 3px solid var(--teal); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+    .pillar:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(13,155,175,0.16); border-left-color: var(--navy); }
+    .pillar strong { color: var(--navy); font-size: 0.88rem; display: block; font-weight: 600; }
+    .pillar span { color: var(--muted); font-size: 0.78rem; }
+
+    /* ─── CONTACT ───── */
+    #contact { background: var(--navy); padding: 4rem 2rem; }
+    #contact h2 { color: #fff; }
+    #contact .section-label { background: rgba(13,155,175,0.2); border-color: rgba(13,155,175,0.4); }
+    #contact .section-desc { color: rgba(255,255,255,0.65); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .contact-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 12px; padding: 1.5rem; transition: all 0.2s;
+    }
+    .contact-card:hover { background: rgba(13,155,175,0.15); border-color: var(--teal); transform: translateY(-3px); }
+    .contact-icon { font-size: 1.5rem; margin-bottom: 0.6rem; display: inline-block; transition: transform 0.3s ease; }
+    .contact-card:hover .contact-icon { transform: scale(1.2) rotate(-6deg); }
+    .contact-card h4 { color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.3rem; }
+    .contact-card p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.5; }
+    .contact-card a { color: var(--teal); text-decoration: none; }
+    .social-icon-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .social-icon-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.9); text-decoration: none;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: -0.02em;
+      transition: all 0.2s;
+    }
+    .social-icon-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; transform: translateY(-2px); }
+    .social-icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar { background: var(--navy); border-top: 3px solid var(--teal); padding: 2.5rem 2rem; }
+    .stats-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; }
+    .stats-bar .hero-stat strong { color: var(--teal); }
+    .stats-bar .hero-stat span { color: rgba(255,255,255,0.6); }
+
+    /* ─── FOOTER ───── */
+    footer { background: #0d1b36; text-align: center; padding: 2rem; border-top: 3px solid var(--teal); }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; font-size: 1.1rem; }
+    .footer-logo span { color: var(--teal); }
+    footer p { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-top: 0.5rem; }
+
+    /* ─── APP PAGES (Home is the landing page; other sections only
+           appear when their nav button is clicked, not on the same
+           scrolling page) ──────────────────────── */
+    .app-page { display: none; }
+    .app-page.active { display: block; }
+
+    /* ─── SCROLL REVEAL ───────────────────────── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Sequential ("in order") reveal: children of these grids fade/rise in
+       one after another rather than all at once, giving the page a lively,
+       cascading feel as each section scrolls into view. */
+    .updates-grid > .reveal:nth-child(1),  .tab-panel.active > .reveal:nth-child(1),  .contact-grid > .reveal:nth-child(1),  .pillars > .reveal:nth-child(1)  { transition-delay: 0.00s; }
+    .updates-grid > .reveal:nth-child(2),  .tab-panel.active > .reveal:nth-child(2),  .contact-grid > .reveal:nth-child(2),  .pillars > .reveal:nth-child(2)  { transition-delay: 0.06s; }
+    .updates-grid > .reveal:nth-child(3),  .tab-panel.active > .reveal:nth-child(3),  .contact-grid > .reveal:nth-child(3),  .pillars > .reveal:nth-child(3)  { transition-delay: 0.12s; }
+    .updates-grid > .reveal:nth-child(4),  .tab-panel.active > .reveal:nth-child(4),  .contact-grid > .reveal:nth-child(4),  .pillars > .reveal:nth-child(4)  { transition-delay: 0.18s; }
+    .updates-grid > .reveal:nth-child(5),  .tab-panel.active > .reveal:nth-child(5),  .contact-grid > .reveal:nth-child(5)  { transition-delay: 0.24s; }
+    .updates-grid > .reveal:nth-child(6),  .tab-panel.active > .reveal:nth-child(6),  .contact-grid > .reveal:nth-child(6)  { transition-delay: 0.30s; }
+    .updates-grid > .reveal:nth-child(7),  .tab-panel.active > .reveal:nth-child(7)  { transition-delay: 0.36s; }
+    .updates-grid > .reveal:nth-child(8),  .tab-panel.active > .reveal:nth-child(8)  { transition-delay: 0.42s; }
+    .tab-panel.active > .reveal:nth-child(9)  { transition-delay: 0.48s; }
+    .tab-panel.active > .reveal:nth-child(10) { transition-delay: 0.54s; }
+    .tab-panel.active > .reveal:nth-child(11) { transition-delay: 0.60s; }
+    .tab-panel.active > .reveal:nth-child(12) { transition-delay: 0.66s; }
+    .tab-panel.active > .reveal:nth-child(n+13) { transition-delay: 0.72s; }
+    @media (max-width: 768px) {
+      /* Shorter cascade on small screens so long lists don't feel sluggish */
+      .updates-grid > .reveal, .tab-panel.active > .reveal, .contact-grid > .reveal, .pillars > .reveal { transition-delay: 0s !important; }
+      .updates-grid > .reveal:nth-child(2n), .tab-panel.active > .reveal:nth-child(2n), .contact-grid > .reveal:nth-child(2n) { transition-delay: 0.08s !important; }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .update-featured { grid-template-columns: 1fr; }
+      .update-featured-banner { min-height: 240px; }
+      .nav-links { display: none; position: fixed; inset: 66px 0 0 0; background: #fff; border-top: 1px solid var(--border); flex-direction: column; padding: 1.5rem 2rem; gap: 0.5rem; z-index: 998; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+      .nav-links a { color: var(--navy); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .nav-dropdown { width: 100%; }
+      .nav-dropdown-trigger { width: 100%; justify-content: flex-start; }
+      .nav-dropdown-menu { left: 0; right: 0; width: 100%; min-width: 0; }
+      /* Keep the header a single tidy row on small screens instead of the
+         two-line title + subtitle wrapping and overflowing the fixed-
+         height nav (which was squashing/clipping the logo). */
+      nav { padding: 0.55rem 0.9rem; height: auto; min-height: 66px; }
+      .nav-logo { gap: 8px; min-width: 0; align-items: center; }
+      .nav-logo-img { width: 36px; height: 36px; flex-shrink: 0; }
+      .nav-brand {
+        font-size: 0.62rem; line-height: 1.25; white-space: normal;
+        max-width: 58vw;
+      }
+      .nav-brand span { display: block; font-size: 0.52rem; margin-top: 0.1rem; }
+      .campus-banner-wrap { margin-top: 92px; }
+    }
+    @media (max-width: 400px) {
+      .nav-brand { max-width: 54vw; font-size: 0.56rem; }
+      .nav-brand span { font-size: 0.48rem; }
+      .campus-banner-wrap { margin-top: 100px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      .ticker-inner { animation: none; }
+      .campus-banner-img { animation: none; }
+      .banner-sheen, .banner-clouds { animation: none; opacity: 0; }
+      .student-badge { animation: none; opacity: 1; position: static; display: inline-flex; margin: 0.3rem; }
+      .banner-welcome, .banner-chant { animation: none; opacity: 1; }
+      .banner-underline { animation: none; width: min(70%, 340px); }
+      .hero-blob { animation: none; }
+      .hero-badge, .hero-logo-row, h1, .hero-sub, .hero-stats { animation: none; opacity: 1; transform: none; }
+      .hero-logo-row { animation: none; }
+      nav { animation: none; top: 0; }
+      .nav-links a { animation: none; opacity: 1; transform: none; }
+      .hero-stat { animation: none; opacity: 1; }
+      .update-card:hover .update-banner img,
+      .person-card:hover .person-photo img { transform: none; }
+    }
+    /* ─── LIGHT SHINE AROUND PHOTO EFFECT ───── */
+    .person-card.shine .person-photo {
+      animation: photo-shine 1.1s ease-out;
+    }
+    .person-card.shine {
+      animation: card-shine 1.1s ease-out;
+    }
+    @keyframes card-shine {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(13,155,175,0); border-color: var(--border); }
+      30%  { box-shadow: 0 0 18px 3px rgba(255,255,255,0.9), 0 0 38px 10px rgba(13,155,175,0.55); border-color: var(--teal); }
+      65%  { box-shadow: 0 0 14px 2px rgba(255,255,255,0.55), 0 0 26px 7px rgba(13,155,175,0.3); border-color: var(--teal); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(13,155,175,0); border-color: var(--border); }
+    }
+    @keyframes photo-shine {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(13,155,175,0); }
+      30%  { box-shadow: 0 0 20px 6px rgba(255,255,255,0.95), 0 0 42px 16px rgba(13,155,175,0.6); }
+      65%  { box-shadow: 0 0 16px 4px rgba(255,255,255,0.6), 0 0 30px 11px rgba(13,155,175,0.32); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(13,155,175,0); }
+    }
+    #lightning-overlay { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .person-card.shine .person-photo { animation: none !important; }
+      .person-card.shine { animation: none !important; }
+    }
+    /* ─── DESKTOP: fit landing page within one viewport, no scroll ───── */
+    @media (min-width: 1024px) {
+      .campus-banner-wrap { height: 170px; }
+      .banner-crest-wrap .school-crest-circle, .banner-logo-slot { width: 40px; height: 40px; }
+      .campus-banner-motion { gap: 0.3rem; padding: 0.5rem 1.5rem; }
+      .banner-welcome { font-size: clamp(1rem, 2.6vw, 1.5rem); }
+      .banner-chant { font-size: 0.62rem; letter-spacing: 0.12em; }
+      .banner-underline { margin-top: 0; }
+      .campus-banner-overlay { padding: 0.5rem 2rem; font-size: 0.4rem; }
+      #home { padding: 0.4rem 2rem 1.2rem; }
+      .hero-badge { margin-bottom: 0.5rem; }
+      .hero-logo-row { margin-bottom: 0.6rem; }
+      .hero-logo-wrap, .hero-crest { width: 64px; height: 64px; }
+      h1 { font-size: clamp(1.2rem, 2.4vw, 1.75rem); }
+      .hero-sub { margin: 0.5rem auto 0.8rem; font-size: 0.88rem; line-height: 1.45; }
+      .hero-stats { margin-top: 0.9rem; }
+      .ticker-strip { padding: 0.4rem 0; }
+      .stats-bar { padding: 0.85rem 2rem; }
+      .stats-bar .hero-stat strong { font-size: 1.35rem; }
+      footer { padding: 0.75rem; }
+      footer p { margin-top: 0.3rem; }
+    }
+  </style>
+  <!-- Netlify Identity: provides email/password signup & login for Admin access.
+       Requires Identity to be enabled on this site in the Netlify dashboard
+       (Site configuration → Identity → Enable Identity). -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- EmailJS: sends Voice Out feedback silently in the background, no mail app popup -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════ BREEZE & CLOUD OVERLAY ═══════ -->
+<div id="lightning-overlay"></div>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+  <a href="#home" class="nav-logo" onclick="showPage(event,'home-page')">
+    <div class="nav-logo-img">
+      <img src="IMG-20260411-WA0061-removebg-preview.png" alt="Logo">
+      
+    </div>
+    <div class="nav-brand">
+      STUDENT'S UNION GOVERNMENT
+      <span>State University of Medical and Applied Sciences,Igbo-Eno</span>
+    </div>
+  </a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="#home" onclick="showPage(event,'home-page')" class="active">Home</a>
+    <div class="nav-dropdown" id="updates-nav-dropdown">
+      <button type="button" class="nav-dropdown-trigger" onclick="toggleNavDropdown(event)" aria-haspopup="true" aria-expanded="false">
+        Updates <span class="nav-dropdown-arrow">▾</span>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="#updates" onclick="showPage(event,'updates'); closeNavDropdown();">📰 News</a>
+        <a href="https://www.icanstudent.com/category/scholarships-and-study-abroad/" target="_blank" rel="noopener noreferrer" onclick="closeNavDropdown()">🎓 Opportunities</a>
+      </div>
+    </div>
+    <a href="#leadership" onclick="showPage(event,'leadership')">Leadership</a>
+    <a href="#voice-out" onclick="showPage(event,'voice-out')">Voice</a>
+    <a href="#about" onclick="showPage(event,'about')">About</a>
+    <a href="#contact" onclick="showPage(event,'contact')">Contact</a>
+    
+  </div>
+</nav>
+
+<div id="main-content">
+
+<!-- ═══════ HOME PAGE (banner + hero + ticker all disappear together) ═══════ -->
+<div id="home-page" class="app-page active">
+
+<!-- ═══════ CAMPUS BANNER IMAGE ═══════ -->
+<div class="campus-banner-wrap">
+  <img src="campus.png" alt="SUMAS Campus Aerial View" class="campus-banner-img" />
+  <div class="banner-sheen" aria-hidden="true"></div>
+  <div class="banner-clouds" aria-hidden="true"></div>
+  <img src="students-photo.png" alt="SUMAS Students" class="campus-banner-photo" />
+  <div class="campus-banner-motion" aria-hidden="true">
+    <div class="banner-crest-wrap">
+      <div class="banner-logo-slot">
+        <div class="school-crest-circle crest-a">
+          <img src="20260404_092236-removebg-preview.png" alt="School Crest">
+        </div>
+        <div class="school-crest-circle crest-b">
+          <img src="IMG-20260411-WA0061-removebg-preview.png" alt="SUG Logo">
+        </div>
+        <div class="school-crest-circle crest-c">
+          <img src="Nans.png" alt="NANS Logo">
+        </div>
+      </div>
+    </div>
+    <div class="banner-welcome">Welcome to Nigeria Students Voice</div>
+    <div class="banner-underline"></div>
+    <div class="banner-chant">Aluta Continua ... Victoria Acerta</div>
+  </div>
+  <div class="campus-banner-overlay">
+    <span>State University of Medical and Applied Sciences,Igbo-Eno · Enugu State, Nigeria</span>
+  </div>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="home">
+  <div class="hero-blob b1" aria-hidden="true"></div>
+  <div class="hero-blob b2" aria-hidden="true"></div>
+  <div class="hero-blob b3" aria-hidden="true"></div>
+  <div class="hero-flex">
+
+  <div class="hero-text-col">
+      <div class="hero-badge">Official SUG SUMAS· 2025/2026 Administration</div>
+
+      <div class="hero-logo-row">
+        <div class="hero-logo-wrap">
+          <img src="IMG-20260411-WA0061-removebg-preview.png" alt="Logo">
+        </div>
+        <div class="school-crest-circle hero-crest">
+          <img src="20260404_092236-removebg-preview.png" alt="School Crest">
+        </div>
+      </div>
+
+      <h1>STUDENT'S UNION GOVERNMENT<br><em>SUMAS</em></h1>
+      <p class="hero-sub">
+        The official voice of students at the State University of Medical and Applied Sciences,Igbo-Eno, Enugu State —
+        advocating welfare, advancing rights, and building a thriving campus community.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════ TICKER (scrolling news strip) ═══════ -->
+<div class="ticker-strip">
+  <div class="ticker-inner" id="ticker-inner"></div>
+</div>
+
+<!-- ═══════ HOME SPOTLIGHT (auto-rotating updates) ═══════ -->
+<div class="home-spotlight">
+  <div class="home-spotlight-head">
+    <h3>Latest From The Union</h3>
+    <a href="#updates" onclick="showPage(event,'updates')">View all updates →</a>
+  </div>
+  <div class="spotlight-viewport">
+    <div class="spotlight-track" id="spotlight-track"></div>
+  </div>
+  <div class="spotlight-dots" id="spotlight-dots"></div>
+</div>
+
+<!-- ═══════ POST UPDATE FORM ═══════ -->
+<!-- ═══════ ADMIN PANEL (hidden — access via ?admin=1 or #admin) ═══════ -->
+<!-- Auth is handled by Netlify Identity (email + password signup/login).
+     Enable Identity for this site in the Netlify dashboard:
+     Site configuration → Identity → Enable Identity. Optionally restrict
+     signups to invite-only under Identity → Registration preferences. -->
+<div id="admin-gate" style="display:none; background:var(--teal-lt); padding:5rem 2rem;">
+  <div style="max-width:420px; margin:0 auto; text-align:center;">
+    <div style="width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.2rem;">🔐</div>
+    <h2 style="color:var(--navy);font-size:1.5rem;margin-bottom:0.5rem;">Admin Access</h2>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.8rem;">Sign in with your officer email to access the update panel. New officers can sign up with an email and password.</p>
+    <div style="display:flex; flex-direction:column; gap:0.7rem;">
+      <button onclick="netlifyIdentity.open('login')"
+        style="padding:0.85rem 1.2rem;background:var(--teal);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:Syne,sans-serif;font-size:0.95rem;">
+        Log In
+      </button>
+      <button onclick="netlifyIdentity.open('signup')"
+        style="padding:0.85rem 1.2rem;background:#fff;color:var(--teal);border:1.5px solid var(--teal);border-radius:8px;font-weight:700;cursor:pointer;font-family:Syne,sans-serif;font-size:0.95rem;">
+        Sign Up
+      </button>
+    </div>
+    <p id="admin-code-error" style="color:#e53e3e;font-size:0.82rem;margin-top:1rem;display:none;">❌ Your account isn't authorized for admin access.</p>
+  </div>
+</div>
+
+<section id="post-update" style="display:none;">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="section-label">Admin Panel</span>
+      <h2>Post a New Update</h2>
+      <p class="section-desc" style="margin:0 auto;">SUG officers can publish new announcements, events, and news directly to the portal.</p>
+      <p style="margin-top:0.6rem; font-size:0.85rem; color:var(--muted);">
+        Signed in as <strong id="admin-user-email">…</strong> ·
+        <a href="#" onclick="netlifyIdentity.logout(); return false;" style="color:var(--teal); font-weight:600;">Log out</a>
+      </p>
+    </div>
+    <div class="form-card">
+      <h3>📝 New Update</h3>
+      <p>Fill in the details below to publish an update to the student body.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Update Title *</label>
+          <input type="text" id="upd-title" placeholder="e.g. SUG Town Hall Meeting — July 2025" />
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="upd-cat">
+            <option value="announcement">📢 Announcement</option>
+            <option value="event">🎓 Event</option>
+            <option value="achievement">🏆 Achievement</option>
+            <option value="notice">📋 Notice</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Summary / Excerpt *</label>
+        <textarea id="upd-excerpt" placeholder="Short description shown in the update card (2-3 sentences)…"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Banner Image (optional)</label>
+        <div class="form-img-preview" id="img-preview" onclick="document.getElementById('upd-img').click()">
+          <span>Click to upload a banner image</span>
+        </div>
+        <input type="file" id="upd-img" accept="image/*" style="display:none" onchange="previewImg(event)" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Posted By (Name &amp; Role)</label>
+          <input type="text" id="upd-author" placeholder="e.g. Director of Information" />
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="upd-date" />
+        </div>
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;">
+        <input type="checkbox" id="upd-feature" style="width:16px;height:16px;accent-color:var(--teal);" />
+        <label for="upd-feature" style="text-transform:none;letter-spacing:0;font-size:0.85rem;color:var(--muted);margin:0;">Pin as featured update (replaces the top card)</label>
+      </div>
+      <button class="form-submit" onclick="postUpdate()">📢 Publish Update</button>
+      <div class="success-msg" id="success-msg">✅ Update published It now appears in the Updates section.</div>
+    </div>
+
+    <div class="form-card" style="margin-top:2rem;">
+      <h3>🗣️ Voice Out Submissions</h3>
+      <p>Feedback students have sent through the Voice Out form. Only visible to signed-in officers.</p>
+      <div id="voiceout-count" style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;"></div>
+      <div id="voiceout-list-container">
+        <p style="color:var(--muted);font-size:0.85rem;">Loading feedback…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div> <!-- /#home-page -->
+
+<!-- ═══════ UPDATES (right after hero) ═══════ -->
+<section id="updates" class="app-page">
+  <div class="section-inner">
+    <div class="updates-header reveal">
+      <div>
+        <span class="section-label">Latest</span>
+        <h2>Updates &amp; Announcements</h2>
+        <p class="section-desc">Everything happening in your union, right here — updated every day.</p>
+      </div>
+    </div>
+
+    <!-- FEATURED update (most recent / pinned) -->
+    <div class="update-featured reveal" id="featured-card">
+      <div class="update-featured-banner">
+        📢
+        <span class="update-featured-tag update-tag tag-announcement">Announcement</span>
+      </div>
+      <div class="update-featured-body">
+        <div class="update-date">📅 June 27, 2025 · Director of Information</div>
+        <div class="update-title">Welcome to the New SUG SUMAS Official Portal</div>
+        <div class="update-excerpt">
+          The Student's Union Government is proud to launch its official digital portal — your one-stop hub for all union news, leadership information, student resources, and daily announcements. Bookmark this page and stay connected with your union.
+        </div>
+        <a href="#" class="update-link">Read more →</a>
+        <div class="update-actions"></div>
+      </div>
+    </div>
+    <div class="updates-grid" id="updates-grid">
+      <div class="update-card reveal">
+        <div class="update-banner">🎓<span class="update-tag tag-event">Event</span></div>
+        <div class="update-body">
+          <div class="update-date">📅 July 10, 2025</div>
+          <div class="update-title">BlockchainSUMAS Tech Onboarding — Recap</div>
+          <div class="update-excerpt">The Ministry of Science & Technology hosted a successful blockchain literacy session drawing 200+ students to explore Web3 opportunities.</div>
+          <a href="#" class="update-link">Read more →</a>
+        </div>
+      </div>
+
+      <div class="update-card reveal">
+        <div class="update-banner">🏆<span class="update-tag tag-achievement">Achievement</span></div>
+        <div class="update-body">
+          <div class="update-date">📅 June 10, 2025</div>
+          <div class="update-title">SUMAS Students Excel at State Innovation Summit</div>
+          <div class="update-excerpt">Three student teams from SUMAS won top prizes at the Enugu State Innovation Summit, reflecting the union's drive for excellence.</div>
+          <a href="#" class="update-link">Read more →</a>
+        </div>
+      </div>
+
+      <div class="update-card reveal">
+        <div class="update-banner">📋<span class="update-tag tag-notice">Notice</span></div>
+        <div class="update-body">
+          <div class="update-date">📅 June 5, 2025</div>
+          <div class="update-title">Welfare: Hostel Maintenance Petition Update</div>
+          <div class="update-excerpt">University management has acknowledged the hostel maintenance petition — work commences next week per confirmation from the Director of Welfare.</div>
+          <a href="#" class="update-link">Read more →</a>
+        </div>
+      </div>
+
+      <div class="update-card reveal">
+        <div class="update-banner">📢<span class="update-tag tag-announcement">Announcement</span></div>
+        <div class="update-body">
+          <div class="update-date">📅 June 1, 2025</div>
+          <div class="update-title">SUG Town Hall Meeting — Details Soon</div>
+          <div class="update-excerpt">The SUG President will convene a Town Hall for all students. Date, venue, and agenda will be announced on this portal. Stay tuned.</div>
+          <a href="#" class="update-link">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LEADERSHIP ═══════ -->
+<section id="leadership" class="app-page">
+
+    <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label" style="background:rgba(13,155,175,0.15);border-color:rgba(13,155,175,0.4);">Leadership</span>
+      <h2>THE FACES OF SUMAS STUDENT'S UNION GOVERNMENT 2025/2026 SESSION</h2>
+      <p class="section-desc">Meet the dedicated individuals steering the union affairs,elected to serve every student.</p>
+    </div>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" onclick="switchTab('executives',this)">🏛️ Executives</button>
+      <button class="tab-btn" onclick="switchTab('ministers',this)">⚙️ Ministers</button>
+      <button class="tab-btn" onclick="switchTab('assistants',this)">🤝 Special Assistants</button>
+    </div>
+
+    <!-- EXECUTIVES -->
+    <div class="tab-panel active" id="tab-executives">
+      <div class="person-card exec reveal" data-wa="PRESIDENT_WA_NUMBER" data-fb="PRESIDENT_FB_PAGE" onclick="openModal(this,'SUG President','Comr. [IKEUWA CLETUS 0NYEBUCHI]','COMR CLETUS is the chief executive officer of the Student\'s Union Government,  he is responsible for the overall administration of the union, chairing all general meetings, and representing students before the university authority.He is a student in the department of Medicine & Surgery, he is from Enugu State.','exec')">
+        <div class="person-photo"><img src="IKEUWA.png" alt="President"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR. IKEUWA CLETUS 0NYEBUCHI</div><div class="person-dept">SUG PRESIDENT</div><span class="person-more">View Profile →</span></div>
+
+      </div>
+      <div class="person-card exec reveal" data-wa="+2349031613196" data-fb="VICE_PRES_FB_PAGE" onclick="openModal(this,'Vice President','COMR. [OKECHUKWU SIXTUS]','The Vice President supports the President in all administrative duties and assumes the office in the President\'s absence. Oversees day-to-day union operations and inter-departmental coordination. He is a student in the department of Medical Radiography. He is from Enugu State','exec')">
+        <div class="person-photo"><img src="OKECHUKWU.png" alt= "Vice President"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR. OKECHUKWU SIXTUS OLUEBUBE</div><div class="person-dept">SUG VICE PRESIDENT</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="SEC_GEN_WA_NUMBER" data-fb="SEC_GEN_FB_PAGE" onclick="openModal(this,'Secretary General','COMR. [PATRICK CHIGOZIE FAVOUR]','Comr.Patrick is responsible for the administrative records of the union, correspondence, and ensuring smooth communication between all SUG arms and departments.He is a student in the department of Medicine & Surgery.He is from Imo State.','exec')">
+        <div class="person-photo"><img src="PATRICK.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR.PATRICK CHIGOZIE FAVOUR</div><div class="person-dept">SECRETARY GENERAL</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="+2349012785784" data-fb="" onclick="openModal(this,'Treasurer','COMR. [CHIMBO PRAISE CHIBUNKEM]','Comr.Praise manages and safeguards the financial resources of the union, prepares budgets, and ensures accountability in all financial transactions. She is a student in the department of Medical Radiography.She is from Abia State','exec')">
+        <div class="person-photo"><img src="CHIMBO.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR. CHIMBO PRAISE CHIBUNKEM</div><div class="person-dept">TREASURER</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="+2348147883523" data-fb="" onclick="openModal(this,'Financial Secretary','COMR. [GODFREY JULIANA CHIDIMMA]','The Financial Secretary works alongside the Treasurer to maintain accurate financial records, receipts, and disbursements of all union funds. She is a student in the department of Medicine & Surgery.She is from Enugu State ','exec')">
+        <div class="person-photo"><img src="GODFREY.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR.GODFREY JULIANA CHIDIMMA </div><div class="person-dept">FINANCIAL SECRETARY</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="+2349063764346" data-fb="DIR_INFO_FB_PAGE" onclick="openModal(this,'Director of Information','COMR. [AGBO INNOCENT UCHE]','The Director of Information manages all official communications, press releases, social media, and ensures timely dissemination of union news to the student body, He is a student in the departmnt of Medical Laboratory Science . He is from Enugu State.','exec')">
+        <div class="person-photo"><img src="AGBO.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR.AGBO INNOCENT UCHE</div><div class="person-dept">DIRECTOR OF INFORMATION</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="DIR_WELFARE_WA_NUMBER" data-fb="DIR_WELFARE_FB_PAGE" onclick="openModal(this,'DIRECTOR OF WELFARE','COMR [EMMANUEL OLORUNLOGBON]','The Director of Welfare champions the health, accommodation, academic, and general welfare concerns of all students, liaising with university management for resolutions. He is a student in the department of Medicine & Surgery . He is from Efo-Amuro Mopamuro LGA, Kogi State','exec')">
+        <div class="person-photo"><img src="EMMANUEL.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR.EMMANUEL OLORUNLOGBON</div><div class="person-dept">DIRECTOR OF WELFARE</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="+2348101710792" data-fb="DIR_GAMES_FB_PAGE" onclick="openModal(this,'Director of Games','COMR. [IGBONEKWU DESMOND EMEKA]','The Director of Games organizes and supervises all sports activities, inter-departmental competitions, and promotes physical well-being among SUMAS students.He is a student in the department of Medical Radiography.He is from Enugu State.','exec')">
+        <div class="person-photo"><img src="IGBONEKWU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR. IGBONEKWU DESMOND EMEKA</div><div class="person-dept">DIRECTOR OF GAMES</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card exec reveal" data-wa="ASST_SEC_WA_NUMBER" data-fb="ASST_SEC_FB_PAGE" onclick="openModal(this,'Assistant Secretary General','COMR. [NEVOH MICHEAL UCHENNA]','Comr.Micheal as the Assistant Secretary General renders suppotrt to the Secretary in the administrative documentation of the unions activities  .He is a student in the department of Medicine & Surgery','exec')">
+        <div class="person-photo"><img src="NEVOH.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">COMR.NEVOH MICHEAL UCHENNA </div><div class="person-dept">ASSISTANT SECRETARY GENERAL</div><span class="person-more">View Profile →</span></div>
+      </div>
+
+
+    </div>
+
+    <!-- MINISTERS -->
+    <div class="tab-panel" id="tab-ministers">
+      <div class="person-card minister reveal" data-wa="+2348166748107" data-fb="https://www.facebook.com/profile.php?id=61583666477826" onclick="openModal(this,'Minister for Science & Technology','HON. [ABONYI JUSTUS CHIDIEBERE]','Justus is a student in the department of Civil Engineering.He is from Enugu State ','minister')">
+        <div class="person-photo"><img src="ABONYI.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ABONYI JUSTUS CHIDIEBERE (Ohaneze_Blockchain)</div><div class="person-dept">MINISTER FOR  SCIENCE  & TECHNOLOGY</div><span class="person-more">View Profile →</span></div>
+        </div>
+
+       <div class="person-card minister reveal" data-wa="MIN_WATER_WA" data-fb="MIN_WATER_FB" onclick="openModal(this,'Minister for water and Natural Resources','HON. [PEDRO MKPUME]','Pedro is a student in the department of Medical Radiography,He is from Enugu State.','minister')">
+        <div class="person-photo"><img src="PEDRO.png"></div>
+         <div class="person-body"><div class="person-role"></div><div class="person-name">HON. PEDRO MKPUME</div><div class="person-dept">MINISTER FOR WATER AND NATURAL RESOURCES</div><span class="person-more">View Profile →</span></div>
+      </div>
+      
+      <div class="person-card minister reveal" data-wa="MIN_WORKS_WA" data-fb="MIN_WORKS_FB" onclick="openModal(this,'Minister for Works and Infrastructure','HON. [EKETTE P.G EBUBECHUKWU]','He is a student in the department of Pharmacy.He is from Enugu State.','minister')">
+        <div class="person-photo"><img src="EKETTE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.EKETTE P.G EBUBECHUKWU</div><div class="person-dept">MINISTER FOR WORKS & INFRASTRUCTURE</div><span class="person-more">View Profile →</span></div>
+      </div>
+    
+      <div class="person-card minister reveal" data-wa="MIN_WELFARE_WA" data-fb="MIN_WELFARE_FB" onclick="openModal(this,'Minister for Stuents Welfare ','HON. [OGBUJA LAWRETTA CHIBUDOM]','Lawretta is a student in the department of Nutrition & Dietetics.She is from Enugu State.','minister')">
+        <div class="person-photo"><img src="OGBUJA.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.OGBUJA LAWRETTA CHIBUDOM</div><div class="person-dept">MINISTER FOR STUDENTS WELFARE</div><span class="person-more">View Profile →</span></div>
+      </div>
+      
+      <div class="person-card minister reveal" data-wa="MIN_ARTS_WA" data-fb="MIN_ARTS_FB" onclick="openModal(this,'Minister for Arts and Creative Economy','HON. [EZE NELSON CHIEMEZIE]','Nelson is a student in the department of Computer Science. He is from Enugu State','minister')">
+        <div class="person-photo"><img src="EZE2.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.EZE NELSON CHIEMEZIE</div><div class="person-dept">MINISTER FOR ARTS & CREATIVE ECONOMY</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="MIN_POL_WA" data-fb="MIN_POL_FB" onclick="openModal(this,'Minister for Political Affairs','HON. [AGU PRINCE ONYEDIKACHI]','Prince is a student in the department of Human Anatomy.He is from Enugu State ','minister')">
+        <div class="person-photo"><img src="AGU2.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.PRINCE ONYEDIKACHI AGU (CBNATION)</div><div class="person-dept">MINISTER FOR POLITICAL AFFAIRS</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="MIN_ENTREP_WA" data-fb="MIN_ENTREP_FB" onclick="openModal(this,'Minister for Entrepreneurship','HON. [UMEH ONYEDIKA .N.]','Onyedika is a student in the department of Genetic & Biotechnology. He is from Enugu State.','minister')">
+        <div class="person-photo"><img src="UMEH.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON. UMEH ONYEDIKA .N.</div><div class="person-dept">MINISTER FOR ENTREPRENUERSHIP</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="MIN_SEC_OFFCAMP_WA" data-fb="MIN_SEC_OFFCAMP_FB" onclick="openModal(this,'Minister for Security and Off-campus Affairs','HON. [UGWU VICTOR IFEANYI]','Victor is a student in the department of Computer Science. He is from Enugu State','minister')">
+        <div class="person-photo"><img src="UGWU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.UGWU VICTOR IFEANYI</div><div class="person-dept">MINISTER FOR SECURITY & OFF-CAMPUS AFFAIRS</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="MIN_FINANCE_WA" data-fb="MIN_FINANCE_FB" onclick="openModal(this,'Minister for Finance','HON. [OMEJE SAMUEL MAURICE]','Maurice is a student in the department of Computer Science.He is from Enugu State','minister')">
+        <div class="person-photo"><img src="OMEJE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.OMEJE SAMUEL MAURICE</div><div class="person-dept">MINISTER FOR FINANCE</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="" data-fb="" onclick="openModal(this,'Minister for Transportation 11','HON[ASUQUO MKPOUTOABASI GODWIN] ','Godwin is a student in the department of Biomedical Engineering. He is from Akwa Ibom State.','minister')">
+        <div class="person-photo"><img src="ASUQUO.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ASUQUO MKPOUTOABASI GODWIN </div><div class="person-dept">MINISTER FOR TRANSPORTATION 11</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2348164705769" data-fb="@Moneyte03448387" onclick="openModal(this,'Minister for Transportation 1','HON. [OKORIE CHINEMEREM ISREAL]','Isreal is a student in the department of Medicine and Surgery. He is from Enugu State','minister')">
+        <div class="person-photo"><img src="OKORIE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.OKORIE CHINEMEREM ISREAL</div><div class="person-dept">MINISTER FOR TRANSPORTATION 1</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="MIN_POW_WA" data-fb="MIN_POW_FB" onclick="openModal(this,'Minister for Power and energy development','HON. [EZE KINGSLEY UCHENNA]','He is a student in the department of Pharmacy.He is from Enugu State','minister')">
+        <div class="person-photo"><img src="EZE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON. EZE KINGSLEY UCHENNA</div><div class="person-dept">MINISTER FOR POWER & ENERGY DEVELOPMENT</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2347025484155" data-fb="MIN_HEALTH_FB" onclick="openModal(this,'Minister for Health','HON. [OGADA EMMANUEL ONYEDIKACHI]','He is a student in the department of Medicine & Surgery. He is from Enugu State.','minister')">
+        <div class="person-photo"><img src="OGADA.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON. OGADA EMMANUEL ONYEDIKACHI</div><div class="person-dept">MINISTER FOR HEALTH</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2349126458036" data-fb="MIN_social_FB" onclick="openModal(this,'Minister for Entertainment & Socials ','HON. [ANKWAI EMMANUEL OKON]','He is a student in the department of Physiotherapy. He is from Akwa-Ibom','minister')">
+        <div class="person-photo"><img src="ANKWAI.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ANKWAI EMMANUEL OKON </div><div class="person-dept">MINISTER FOR ENTERTAINMENT AND SOCIALS</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2348161812248" data-fb="https://www.facebook.com/share/1Edydea3R9/" onclick="openModal(this,'Minister for PROGRAMS AND EVALUATION','HON. [OMASSAH LONGLIFE OCHENEFEJIRO]','He is a student in the department of Pharmacy. He is from Delta State.','minister')">
+        <div class="person-photo"><img src="OMASSAH.png"></div> 
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.OMASSAH LONGLIFE OCHENEFEJIRO </div><div class="person-dept">MINISTER FOR PROGRAMS & EVALUATION </div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2349135067513" data-fb="MIN_ACA" onclick="openModal(this,'Minister for Academics 1 ','HON. [ONAH JENNIFER EBUBE]',' She is a student in the department of Pharmacy.He is from Enugu State','minister')">
+        <div class="person-photo"><img src="ONAH.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ONAH JENNIFER EBUBE</div><div class="person-dept">MINISTER FOR  ACADEMICS 1</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2347033434062" data-fb="MIN_ACA2" onclick="openModal(this,'Minister for Academics 11 ','HON. [ARACHIE THEODORA]','She is a student in the department of .He is from Anambra State.','minister')">
+        <div class="person-photo"><img src="ARACHIE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ARACHIE THEODORA </div><div class="person-dept">MINISTER FOR ACADEMICS 11</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2347064725305" data-fb="https://www.facebook.com/share/1DJ99myo4F/?mibextid=wwXlfr" onclick="openModal(this,'Minister for Environment & Sanitation ','HON.[CHIWETALU ORJIUGO FRANCISCA]',' He is a student in the department of Nursing Science. He is from Enugu State','minister')">
+        <div class="person-photo"><img src="CHIWETALU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.CHIWETALU ORJIUGO FRANCISCA </div><div class="person-dept">MINISTER FOR ENVIRONMENT & SANITATION</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+23490443824232" data-fb="MIN_LEGAL_FB" onclick="openModal(this,'Minister for Culture & Tourism','HON. [OZOR KINGSLEY CHINEDU]','He is a student in department of Medical Laboratory Sciences.He is from Enugu State','minister')">
+        <div class="person-photo"><img src="OZOR.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON. OZOR KINGSLEY CHINEDU </div><div class="person-dept">MINISTER FOR CULTURE & TOURISM </div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2349130658538" data-fb="MIN_COMMS_FB" onclick="openModal(this,'Minister for Sport ','HON.[AMOKE GABRIEL CHIEMEZIE]','He is a student in the department of Public Health Science.He is from Enugu State','minister')">
+        <div class="person-photo"><img src="AMOKE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON. AMOKE GABRIEL CHIEMEZIE </div><div class="person-dept">MINISTER FOR SPORT</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2348134458367" data-fb="MIN_INNOVATION_INST_FB" onclick="openModal(this,'Minister for Innovation & Strategy ','HON. [EZEANI OLIVIA NKEMDIRIM]','She is a student in the department of Biomedical Engineering. She is from Anambra','minister')">
+        <div class="person-photo"><img src="EZEANI.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.EZEANI OLIVIA NKEMDIRIM </div><div class="person-dept"> MINISTER FOR INNOVATION & STRATEGY</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2348141737725" data-fb="MIN-EMERGENCY" onclick="openModal(this,'Minister for Emergency','HON. [ORJI SOMTOCHUKWU]','He is a student in the department of Medicine & Surgery. He is from Enugu State','minister')">
+        <div class="person-photo"><img src="ORJI.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ORJI SOMTOCHUKWU </div><div class="person-dept">MINISTER FOR EMERGENCY </div><span class="person-more">View Profile →</span></div>
+      </div>
+    <div class="person-card minister reveal" data-wa="+2348126556362" data-fb="MIN_GENDER" onclick="openModal(this,'Minister for Gender Affairs ','HON. [NGWU ASSUMPTA CHINAZA] ','He is a student in the department of Architecture.He is from Enugu State ','minister')">
+        <div class="person-photo"><img src="NGWU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON. NGWU ASSUMPTA CHINAZA</div><div class="person-dept">MINISTER FOR GENDER AFFAIRS</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2349031727376" data-fb="" onclick="openModal(this,'Minister for Labour','HON.[ASOGWA JOHNPAUL CHIGOZIE]','He is a student in the department of Medical Laboratory Science. He is from Enugu State','minister')">
+        <div class="person-photo"><img src="ASOGWA.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ASOGWA JOHNPAUL CHIGOZIE  </div><div class="person-dept">MINISTER FOR LABOUR </div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+234" data-fb="" onclick="openModal(this,'Minister for Contact and Mobilization ','HON.[OKOYE ALPHONSUS CHIBUIKE]','He is a student in the department of Medical Radiography.He is from Enugu .','minister')">
+        <div class="person-photo"><img src="OKOYE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.OKOYE ALPHONSUS CHIBUIKE</div><div class="person-dept">MINISTER FOR CONTACT & MOBILIZATION</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="" data-fb="" onclick="openModal(this,'Minister for Media and Graphics.','HON.[ASOGWA WISDOM UGOCHUKWU]','He is a student in the department of Medicine & Surgery.','minister')">
+        <div class="person-photo"><img src="ASOGWA2.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ASOGWA WISDOM UGOCHUKWU </div><div class="person-dept"> MINISTER FOR MEDIA & GRAPHICS </div><span class="person-more">View Profile →</span></div>
+     </div> 
+      <div class="person-card minister reveal" data-wa="" data-fb="" onclick="openModal(this,'Minister for Special Duties.','HON.[ASOGWA PASCHAL TOCHUKWU]','He is a student in the department of Medical Radiography. He is from Enugu State.','minister')">
+        <div class="person-photo"><img src="TOCHUKWU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ASOGWA PASCHAL TOCHUKWU </div><div class="person-dept"> MINISTER FOR SPECIAL DUTIES </div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="" data-fb="" onclick="openModal(this,'Minister for Revenue.','HON.[OZONWOYE CHIEMERIE PETER]','He is a student in the department of Physiotherapy. He is from Enugu State.','minister')">
+        <div class="person-photo"><img src="OZONWOYE.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.OZONWOYE CHIEMERIE PETER </div><div class="person-dept"> MINISTER FOR REVENUE </div><span class="person-more">View Profile →</span></div>
+      </div>
+   </div>
+    <!-- SPECIAL ASSISTANTS -->
+    <div class="tab-panel" id="tab-assistants">
+      <div class="person-card minister reveal" data-wa="+2349032731102" data-fb="" onclick="openModal(this,'Special Assistant to The President','HON. [NWAONUMAH CHINONSO EMMANUEL]','Emmanuel is a student in the department of Medicine and Surgery.He is from Ebonyi State .','minister')">
+        <div class="person-photo"><img src="NWAONUMAH.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.NWAONUMAH CHINONSO EMMANUEL</div><div class="person-dept">SA TO THE PRESIDENT</div><span class="person-more">View Profile →</span></div>
+      </div>
+
+      <div class="person-card minister reveal" data-wa="=23452771643" data-fb="SA_STUDENT_FB" onclick="openModal(this,'Special Assistant on ','HON.[AGU EMMANUEL CHIDIEBERE]','He is a student in the department of Medical Laboratory Science.He is from Enugu State ','minister')">
+        <div class="person-photo"><img src="AGU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.AGU EMMANUEL CHIDIEBERE </div><div class="person-dept">SA TO THE PRESIDENT</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2349043840972" data-fb="SA_PROTOCOL_FB" onclick="openModal(this,'Chief Protocol Officer ','HON.[ELECHI THEOPHILUS OMINYI]','He is a student in the department of Human Anatomy.He is from Ebonyi State','minister')">
+        <div class="person-photo"><img src="ELECHI.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ELECHI THEOPHILUS OMINYI  </div><div class="person-dept">CHIEF PROTOCOL OFFICER</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="+2347048955432" data-fb="ATNONEY" onclick="openModal(this,'ATTORNEY GENERAL ','HON.[ODO CHARLES.C.]',' He is a student in the department of Physiotherapy. He is from Enugu State ','minister')">
+        <div class="person-photo"><img src="ODO.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ODO CHARLES.C. </div><div class="person-dept">ATTORNEY GENERAL</div><span class="person-more">View Profile →</span></div>
+      </div>
+      <div class="person-card minister reveal" data-wa="" data-fb="SA_MEDIA_FB" onclick="openModal(this,'SA To The Vice President on Strategic Impact, Content Development, Student Engagement, Global Partnerships','HON.[ONONOGBU ESTHER DEBORAH]','She is a student in the department of Public Health. She is from Abia State.','minister')">
+        <div class="person-photo"><img src="ONONOGBU.png"></div>
+        <div class="person-body"><div class="person-role"></div><div class="person-name">HON.ONONOGBU ESTHER DEBORAH </div><div class="person-dept">SA TO THE VICE PRESIDENT</div><span class="person-more">View Profile →</span></div>
+      </div>
+      </div>
+  </div>
+</section>
+
+<!-- ═══════ VOICE OUT (student feedback) ═══════ -->
+<section id="voice-out" class="app-page">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Speak Up</span>
+      <h2>Voice Out</h2>
+      <p class="section-desc">Got a suggestion, complaint, or compliment for the Union? Tell us — every message goes straight to the SUG officers.</p>
+    </div>
+    <div class="form-card reveal">
+      <h3>🗣️ Share Your Feedback</h3>
+      <p>Fill in the form below. Your feedback is sent directly to the Union — no email app or login required.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="vo-name" placeholder="e.g. Jane Doe" required />
+        </div>
+        <div class="form-group">
+          <label>Department *</label>
+          <input type="text" id="vo-department" placeholder="e.g. Human Anatomy" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="vo-category" required>
+            <option value="" disabled selected>Select a category…</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Complaint">Complaint</option>
+            <option value="Compliment">Compliment</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Email *</label>
+          <input type="email" id="vo-email" placeholder="e.g. jane.doe@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Office You Are Directing This To *</label>
+          <select id="vo-office" required>
+            <option value="" disabled selected>Select an office…</option>
+            <option value="General SUG Office (Not office-specific)">General SUG Office (Not office-specific)</option>
+            <optgroup label="Executives">
+              <option value="SUG President">SUG President</option>
+              <option value="SUG Vice President">SUG Vice President</option>
+              <option value="Secretary General">Secretary General</option>
+              <option value="Treasurer">Treasurer</option>
+              <option value="Financial Secretary">Financial Secretary</option>
+              <option value="Director of Information">Director of Information</option>
+              <option value="Director of Welfare">Director of Welfare</option>
+              <option value="Director of Games">Director of Games</option>
+              <option value="Assistant Secretary General">Assistant Secretary General</option>
+            </optgroup>
+            <optgroup label="Ministers">
+              <option value="Minister for Science & Technology">Minister for Science & Technology</option>
+              <option value="Minister for Water and Natural Resources">Minister for Water and Natural Resources</option>
+              <option value="Minister for Works & Infrastructure">Minister for Works & Infrastructure</option>
+              <option value="Minister for Students Welfare">Minister for Students Welfare</option>
+              <option value="Minister for Arts & Creative Economy">Minister for Arts & Creative Economy</option>
+              <option value="Minister for Political Affairs">Minister for Political Affairs</option>
+              <option value="Minister for Entrepreneurship">Minister for Entrepreneurship</option>
+              <option value="Minister for Security & Off-Campus Affairs">Minister for Security & Off-Campus Affairs</option>
+              <option value="Minister for Finance">Minister for Finance</option>
+              <option value="Minister for Transportation 1">Minister for Transportation 1</option>
+              <option value="Minister for Transportation 11">Minister for Transportation 11</option>
+              <option value="Minister for Power & Energy Development">Minister for Power & Energy Development</option>
+              <option value="Minister for Health">Minister for Health</option>
+              <option value="Minister for Entertainment and Socials">Minister for Entertainment and Socials</option>
+              <option value="Minister for Programs & Evaluation">Minister for Programs & Evaluation</option>
+              <option value="Minister for Academics 1">Minister for Academics 1</option>
+              <option value="Minister for Academics 11">Minister for Academics 11</option>
+              <option value="Minister for Environment & Sanitation">Minister for Environment & Sanitation</option>
+              <option value="Minister for Culture & Tourism">Minister for Culture & Tourism</option>
+              <option value="Minister for Sport">Minister for Sport</option>
+              <option value="Minister for Innovation & Strategy">Minister for Innovation & Strategy</option>
+              <option value="Minister for Emergency">Minister for Emergency</option>
+              <option value="Minister for Gender Affairs">Minister for Gender Affairs</option>
+              <option value="Minister for Labour">Minister for Labour</option>
+              <option value="Minister for Contact & Mobilization">Minister for Contact & Mobilization</option>
+              <option value="Minister for Media & Graphics">Minister for Media & Graphics</option>
+            </optgroup>
+            <optgroup label="Special Assistants">
+              <option value="SA to the President">SA to the President</option>
+              <option value="Chief Protocol Officer">Chief Protocol Officer</option>
+              <option value="Attorney General">Attorney General</option>
+              <option value="SA to the Vice President">SA to the Vice President</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Message *</label>
+        <textarea id="vo-message" placeholder="Tell us what's on your mind…" rows="6" required></textarea>
+      </div>
+      <button class="form-submit" onclick="submitVoiceOut()">📨 Send Feedback</button>
+      <div class="success-msg" id="vo-success-msg">✅ Thanks for speaking up! Your feedback has been sent to the Union.</div>
+    </div>
+  </div>
+</section>
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" class="app-page">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Who We Are</span>
+      <h2>More Than a Government- <br>A Movement</h2>
+      <p class="section-desc">The SUG SUMAS is the democratically elected body that represents every student of the State University of Medical and Applied Sciences,Igbo-Eno.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-pill">
+          <strong>🎓 Our Mission</strong>
+          <span>To protect, promote, and advance the academic and social welfare of all SUMASites through democratic governance.</span>
+        </div>
+        <div class="about-pill">
+          <strong>🌍 Our Vision</strong>
+          <span>A united, empowered, and globally competitive student body that drives Welfare,innovation, leadership, and community growth.</span>
+        </div>
+        <div class="about-pill">
+          <strong>⚖️ Our Values</strong>
+          <span>Integrity · Inclusivity · Transparency · Service · Excellence</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p>Founded on the principles of democratic representation, the Student's Union Government at SUMAS serves as the official bridge between the student body and university administration.</p>
+        <p>The executive, House of Senate, House of Representative, ministers, and special assistants work tirelessly across multiple departments — from science and technology to welfare, infrastructure, and social development — ensuring no student is left behind.</p>
+        <p>We organize events, process student complaints, champion academic freedom, and drive campus innovation through dedicated ministries and special offices.</p>
+        <div class="pillars">
+          <div class="pillar"><strong>🏛️ Governance</strong><span>Democratic & transparent</span></div>
+          <div class="pillar"><strong>📚 Academics</strong><span>Supporting learning</span></div>
+          <div class="pillar"><strong>❤️ Welfare</strong><span>Student wellbeing first</span></div>
+          <div class="pillar"><strong>🚀 Innovation</strong><span>Tech & entrepreneurship</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact" class="app-page">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);color:#fff;">Get In Touch</span>
+      <h2>Contact the Union</h2>
+      <p class="section-desc">Reach out to the SUG SUMAS through any of the following channels.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h4>Office Location</h4>
+        <p>SUG Secretariat<br>State University of Medical and Applied Sciences,Igbo-Eno<br>Enugu State, Nigeria</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h4>Email</h4>
+        <p><a href="mailto:sumassugofficial@gmail.com">sumassugofficial@gmail.com</a><br>For official correspondence only</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📱</div>
+        <h4>Social Media</h4>
+        <p>Follow the union on your platform of choice.</p>
+        <div class="social-icon-row">
+          <a href="FACEBOOK_URL" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
+          </a>
+          <a href="INSTAGRAM_URL" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.28 0 12 0Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.25A3.25 3.25 0 1 1 12 6.75a3.25 3.25 0 0 1 0 6.5ZM17.5 4.5a1.17 1.17 0 1 0 0 2.35 1.17 1.17 0 0 0 0-2.35Z" transform="translate(0 2)"/></svg>
+          </a>
+          <a href="X_URL" target="_blank" rel="noopener" class="social-icon-btn" aria-label="X (Twitter)" title="X (Twitter)">
+            <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.2 8.2L23 22h-6.6l-5.2-6.8L5.2 22H2l7.7-8.8L1.5 2h6.8l4.7 6.2L18.9 2Zm-1.15 18h1.7L7.35 3.9H5.5L17.75 20Z"/></svg>
+          </a>
+          <a href="LINKEDIN_URL" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          </a>
+          <a href="TIKTOK_URL" target="_blank" rel="noopener" class="social-icon-btn" aria-label="TikTok" title="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.7a2.9 2.9 0 1 1-2.05-2.77v-3.4a6.3 6.3 0 1 0 5.35 6.23V8.35a7.9 7.9 0 0 0 4.4 1.33V6.4a4.6 4.6 0 0 1-4.4-4.4Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🕐</div>
+        <h4>Office Hours</h4>
+        <p>Monday – Friday<br>9:00 AM – 5:00 PM<br>Closed on Public Holidays</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ═══════ STATS BAR ═══════ -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="hero-stat"><strong data-count-to="6000" data-suffix="+">0</strong><span>Students Represented</span></div>
+    <div class="hero-stat"><strong data-count-to="60" data-suffix="+">0</strong><span>Executives,Special Assistances &amp; Ministers</span></div>
+    <div class="hero-stat"><strong>2025/2026</strong><span>Current Administration</span></div>
+    <div class="hero-stat"><strong>SUMAS</strong><span>Enugu State, Nigeria</span></div>
+  </div>
+</div>
+
+<!-- ═══════ UPDATE DETAILS MODAL (opened via "Read more →") ═══════ -->
+<div class="modal-overlay" id="update-modal" onclick="closeUpdateModal(event)">
+  <div class="update-modal-box">
+    <button class="modal-close" onclick="document.getElementById('update-modal').classList.remove('open')">✕</button>
+    <div class="update-modal-banner" id="update-modal-banner">📢</div>
+    <div class="update-modal-body">
+      <div class="update-date" id="update-modal-date"></div>
+      <div class="update-title" id="update-modal-title"></div>
+      <div class="update-excerpt" id="update-modal-excerpt"></div>
+      <div class="update-video-embed" id="update-modal-video"></div>
+      <div class="update-actions" id="update-modal-actions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SUG <span>SUMAS</span></div>
+  <p>© 2025 Student's Union Government, State University of Medical and Applied Sciences · Enugu State, Nigeria</p>
+  <p style="margin-top:0.4rem;font-size:0.72rem;">Designed by: HON.ABONYI JUSTUS CHIDIEBERE(Ohaneze_Blockchain), Min.Sci & Tech</p>
+</footer>
+
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    <div class="modal-photo" id="modal-photo">👤</div>
+    <div class="modal-body">
+      <div class="modal-role" id="modal-role"></div>
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-bio" id="modal-bio"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── EmailJS config for the Voice Out form ─────────────────
+  // 1. Create a free account at https://www.emailjs.com
+  // 2. Add an Email Service (e.g. connect sumassugofficial@gmail.com) → copy its Service ID below
+  // 3. Create an Email Template with variables: {{name}} {{department}}
+  //    {{email}} {{category}} {{office}} {{message}} → copy its Template ID below
+  // 4. Go to Account → General → copy your Public Key below
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  if (window.emailjs) emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  // ── Light shine around each photo ────────────
+  function triggerLightning() {
+    const panel = document.querySelector('.tab-panel.active') || document;
+    const cards = panel.querySelectorAll('.person-card');
+    cards.forEach((card, i) => {
+      card.classList.remove('shine');
+      void card.offsetWidth; // reflow so animation restarts on rapid clicks
+      setTimeout(() => {
+        card.classList.add('shine');
+        setTimeout(() => card.classList.remove('shine'), 1150);
+      }, 60 + i * 45);
+    });
+  }
+
+  // ── Tab switching ──────────────────────────
+  function switchTab(name, btn) {
+    triggerLightning();
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    const panel = document.getElementById('tab-' + name);
+    panel.classList.add('active');
+    btn.classList.add('active');
+    // Tab content was hidden (display:none) so the scroll-reveal observer
+    // couldn't measure it correctly — reveal it immediately now that the
+    // user has deliberately switched to it, instead of leaving cards
+    // invisible (but still taking up layout space) until a manual scroll.
+    panel.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
+  // ── Modal ──────────────────────────────────
+  function openModal(cardEl, role, name, bio, type) {
+    document.getElementById('modal-role').textContent = role;
+    document.getElementById('modal-name').textContent = name;
+    document.getElementById('modal-bio').textContent = bio;
+    const modalPhoto = document.getElementById('modal-photo');
+    modalPhoto.style.borderTop = type === 'exec' ? '4px solid #0D9BAF' : '4px solid #12A36B';
+
+    // Pull the same photo shown on the card into the modal, if one exists
+    const cardImg = cardEl ? cardEl.querySelector('.person-photo img') : null;
+    if (cardImg && cardImg.getAttribute('src')) {
+      modalPhoto.innerHTML = `<img src="${cardImg.getAttribute('src')}" alt="${name}">`;
+    } else {
+      modalPhoto.innerHTML = '👤';
+    }
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeModal(e) {
+    if (e.target === document.getElementById('modal')) document.getElementById('modal').classList.remove('open');
+  }
+
+  // ── Update details modal ("Read more →") ────
+  // Delegated on the document so it automatically covers the static demo
+  // cards baked into the page, cards rendered from the backend, and cards
+  // a still-logged-in officer just posted — no per-card wiring needed.
+  // Reads whatever is currently on screen for that card, so it's always
+  // showing the real, current content (including the actual image, shown
+  // uncropped via object-fit: contain on the modal banner).
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('.update-link');
+    if (!link) return;
+    e.preventDefault();
+    const card = link.closest('.update-card, .update-featured');
+    if (!card) return;
+
+    const bannerEl = card.querySelector('.update-banner, .update-featured-banner');
+    const img = bannerEl ? bannerEl.querySelector('img') : null;
+    let icon = '📢';
+    if (!img && bannerEl && bannerEl.firstChild && bannerEl.firstChild.nodeType === Node.TEXT_NODE) {
+      icon = bannerEl.firstChild.textContent.trim() || icon;
+    }
+    const titleEl = card.querySelector('.update-title');
+    const excerptEl = card.querySelector('.update-excerpt');
+    const dateEl = card.querySelector('.update-date');
+
+    document.getElementById('update-modal-banner').innerHTML = img ? img.outerHTML : icon;
+    document.getElementById('update-modal-date').textContent = dateEl ? dateEl.textContent : '';
+    document.getElementById('update-modal-title').textContent = titleEl ? titleEl.textContent : '';
+    const fullExcerpt = excerptEl ? excerptEl.textContent : '';
+    document.getElementById('update-modal-excerpt').innerHTML = linkifyText(fullExcerpt);
+    document.getElementById('update-modal-video').innerHTML = extractVideoEmbed(fullExcerpt);
+
+    const u = { id: card.dataset.id || '', title: titleEl ? titleEl.textContent : '' };
+    const actionsSlot = document.getElementById('update-modal-actions');
+    actionsSlot.innerHTML = '';
+    actionsSlot.appendChild(buildUpdateActions(u, card));
+
+    document.getElementById('update-modal').classList.add('open');
+  });
+  function closeUpdateModal(e) {
+    if (e.target === document.getElementById('update-modal')) document.getElementById('update-modal').classList.remove('open');
+  }
+
+  // ── Image preview ──────────────────────────
+  function previewImg(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 1_500_000) {
+      alert('That image is a bit large — please use one under ~1.5MB so it saves quickly.');
+      e.target.value = '';
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      // Store the base64 data URL on the element itself so postUpdate() can
+      // send the real, persistable image data to the backend (not just a
+      // temporary blob: URL that only works in this browser tab).
+      const preview = document.getElementById('img-preview');
+      preview.dataset.imageData = reader.result;
+      preview.innerHTML = `<img src="${reader.result}" alt="Preview">`;
+      preview.classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+  }
+
+
+  // ── Admin gate (Netlify Identity: email + password) ───────
+  // Requires Identity enabled on this site in the Netlify dashboard.
+  // Optionally, restrict who can actually USE the panel (not just sign up)
+  // by checking user.app_metadata.roles here once you've set up an
+  // "admin" role in Netlify Identity → your invited officers.
+  function showAdminPanel(user) {
+    document.getElementById('admin-gate').style.display = 'none';
+    document.getElementById('post-update').style.display = 'block';
+    document.getElementById('admin-user-email').textContent = user.email;
+    document.getElementById('admin-code-error').style.display = 'none';
+    document.getElementById('post-update').scrollIntoView({ behavior: 'smooth' });
+    document.body.classList.add('admin-mode'); // reveals Delete buttons on update cards
+    setAdminFavicon();
+    loadVoiceOutFeedback();
+  }
+
+  function showAdminGate() {
+    document.getElementById('post-update').style.display = 'none';
+    document.getElementById('admin-gate').style.display = 'block';
+    document.body.classList.remove('admin-mode');
+  }
+
+  if (window.netlifyIdentity) {
+    netlifyIdentity.on('init', user => { if (user) showAdminPanel(user); });
+    netlifyIdentity.on('login', user => { showAdminPanel(user); netlifyIdentity.close(); });
+    netlifyIdentity.on('logout', () => { showAdminGate(); });
+    netlifyIdentity.init();
+  }
+
+  // Show gate if URL contains ?admin or #admin
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
+    if (params.has('admin') || hash === '#admin') {
+      setAdminFavicon();
+      const current = window.netlifyIdentity && netlifyIdentity.currentUser();
+      if (current) {
+        showAdminPanel(current);
+      } else {
+        document.getElementById('admin-gate').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('admin-gate').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+      }
+    }
+  });
+
+  // ── Admin favicon: lets officers spot the admin tab at a glance among
+  // other open tabs. Self-contained SVG (navy circle + lock badge,
+  // matching the 🔐 already used on the Admin Access screen) so it works
+  // with no extra image file to upload. Swaps both the favicon and the
+  // tab title; the normal site icon/title are untouched for every other
+  // visitor.
+  function setAdminFavicon() {
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#1A3F7C"/>
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#0D9BAF" stroke-width="3"/>
+        <rect x="20" y="30" width="24" height="18" rx="4" fill="#0D9BAF"/>
+        <path d="M25 30 v-6 a7 7 0 0 1 14 0 v6" fill="none" stroke="#0D9BAF" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="32" cy="38" r="3.2" fill="#1A3F7C"/>
+      </svg>`;
+    const dataUrl = 'data:image/svg+xml,' + encodeURIComponent(svg);
+
+    ['icon', 'apple-touch-icon'].forEach((rel) => {
+      let link = document.querySelector(`link[rel="${rel}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = rel;
+        document.head.appendChild(link);
+      }
+      link.type = 'image/svg+xml';
+      link.href = dataUrl;
+    });
+
+    if (!document.title.startsWith('🔐 ')) {
+      document.title = '🔐 Admin — ' + document.title;
+    }
+  }
+
+  // ── Updates: backend-connected (Netlify Functions + Blobs) ──
+  const tagMap = {
+    announcement: { label: 'Announcement', cls: 'tag-announcement', icon: '📢' },
+    event:        { label: 'Event',         cls: 'tag-event',        icon: '🎓' },
+    achievement:  { label: 'Achievement',   cls: 'tag-achievement',  icon: '🏆' },
+    notice:       { label: 'Notice',        cls: 'tag-notice',       icon: '📋' },
+  };
+
+  // Builds the Share (always) + Delete (admin-only, via CSS) button row for
+  // a single update. Uses addEventListener with closed-over values rather
+  // than inline onclick="" strings, so a title/id never has to be escaped
+  // into an HTML attribute — same XSS-avoidance spirit as the textContent
+  // use below.
+  function buildUpdateActions(u, cardEl) {
+    const wrap = document.createElement('div');
+    wrap.className = 'update-actions';
+
+    const shareBtn = document.createElement('button');
+    shareBtn.type = 'button';
+    shareBtn.className = 'update-action-btn';
+    shareBtn.innerHTML = '🔗 <span>Share</span>';
+    shareBtn.addEventListener('click', () => shareUpdate(u.id, u.title));
+    wrap.appendChild(shareBtn);
+
+    if (u.id) {
+      const delBtn = document.createElement('button');
+      delBtn.type = 'button';
+      delBtn.className = 'update-action-btn danger';
+      delBtn.innerHTML = '🗑️ <span>Delete</span>';
+      delBtn.addEventListener('click', () => deleteUpdate(u.id, cardEl));
+      wrap.appendChild(delBtn);
+    }
+    return wrap;
+  }
+
+  function renderUpdateCard(u) {
+    const tag = tagMap[u.category] || tagMap.announcement;
+    const dateStr = u.date
+      ? new Date(u.date + 'T00:00:00').toLocaleDateString('en-NG', { day:'numeric', month:'long', year:'numeric' })
+      : '';
+    const bannerContent = u.image ? `<img src="${u.image}" alt="">` : tag.icon;
+    const card = document.createElement('div');
+    card.className = 'update-card reveal visible';
+    card.dataset.id = u.id || '';
+    card.innerHTML = `
+      <div class="update-banner${u.image ? ' has-image' : ''}">${bannerContent}<span class="update-tag ${tag.cls}">${tag.label}</span></div>
+      <div class="update-body">
+        <div class="update-date">📅 ${dateStr}${u.author ? ' · ' + u.author : ''}</div>
+        <div class="update-title"></div>
+        <div class="update-excerpt"></div>
+        <a href="#" class="update-link">Read more →</a>
+        <div class="update-actions"></div>
+      </div>`;
+    // textContent (not innerHTML) for user-supplied text — avoids XSS via
+    // an update title/excerpt containing HTML/script.
+    card.querySelector('.update-title').textContent = u.title;
+    card.querySelector('.update-excerpt').textContent = u.excerpt;
+    card.querySelector('.update-actions').appendChild(buildUpdateActions(u, card));
+    return card;
+  }
+
+  function renderFeatured(u) {
+    const tag = tagMap[u.category] || tagMap.announcement;
+    const dateStr = u.date
+      ? new Date(u.date + 'T00:00:00').toLocaleDateString('en-NG', { day:'numeric', month:'long', year:'numeric' })
+      : '';
+    const bannerContent = u.image ? `<img src="${u.image}" alt="">` : tag.icon;
+    const fc = document.getElementById('featured-card');
+    fc.dataset.id = u.id || '';
+    const featBanner = fc.querySelector('.update-featured-banner');
+    featBanner.classList.toggle('has-image', !!u.image);
+    featBanner.innerHTML =
+      `${bannerContent}<span class="update-featured-tag update-tag ${tag.cls}">${tag.label}</span>`;
+    fc.querySelector('.update-date').textContent = `📅 ${dateStr}${u.author ? ' · ' + u.author : ''}`;
+    fc.querySelector('.update-title').textContent = u.title;
+    fc.querySelector('.update-excerpt').textContent = u.excerpt;
+    const actionsSlot = fc.querySelector('.update-actions');
+    actionsSlot.innerHTML = '';
+    actionsSlot.appendChild(buildUpdateActions(u, fc));
+  }
+
+  // Loads real, persisted updates from the backend and renders them above
+  // the static placeholder cards already in the HTML (which stay as a
+  // graceful fallback if the backend isn't set up yet or is unreachable).
+
+  // ── Scrolling ticker ────────────────────────
+  // The strip loops seamlessly by rendering the headline list TWICE back
+  // to back, then animating translateX(-50%) — when the first copy has
+  // scrolled fully off, the second copy is sitting in the exact spot the
+  // first one started in. That trick only works if BOTH halves always
+  // match, so headlines live in one array and the strip is rebuilt from
+  // scratch (never appended to) every time the list changes.
+  let tickerHeadlines = [
+    'Welcome to the new SUG SUMAS Official Website',
+    'BlockchainSUMAS Tech Onboarding Event — Recap available now',
+    'SUMAS Students Excel at State Innovation Summit',
+    'Hostel Maintenance work commences next week — Welfare Director',
+    'Next SUG Town Hall: Date TBA — Check Updates for announcements',
+  ];
+  function renderTicker() {
+    const ticker = document.getElementById('ticker-inner');
+    const html = tickerHeadlines
+      .map(text => `<span class="ticker-item">${text}</span>`)
+      .join('');
+    ticker.innerHTML = html + html; // duplicate set keeps the loop seamless
+  }
+  renderTicker();
+
+  // ── Home spotlight: single-lane auto-rotating carousel ─────
+  // One update slides fully across and off, the next slides in behind it,
+  // on a timer — driven by translateX on a flex track (classic carousel).
+  let allUpdates = [
+    { title: 'Welcome to the New SUG SUMAS Official Portal', excerpt: 'The Student\u2019s Union Government is proud to launch its official digital portal \u2014 your one-stop hub for all union news, leadership information, student resources, and daily announcements.', date: '2025-06-27', category: 'announcement', author: 'Director of Information', image: '' },
+    { title: 'BlockchainSUMAS Tech Onboarding \u2014 Recap', excerpt: 'The Ministry of Science & Technology hosted a successful blockchain literacy session drawing 200+ students to explore Web3 opportunities.', date: '2025-07-10', category: 'event', author: '', image: '' },
+    { title: 'SUMAS Students Excel at State Innovation Summit', excerpt: 'Three student teams from SUMAS won top prizes at the Enugu State Innovation Summit, reflecting the union\u2019s drive for excellence.', date: '2025-06-10', category: 'achievement', author: '', image: '' },
+    { title: 'Welfare: Hostel Maintenance Petition Update', excerpt: 'University management has acknowledged the hostel maintenance petition \u2014 work commences next week per confirmation from the Director of Welfare.', date: '2025-06-05', category: 'notice', author: '', image: '' },
+    { title: 'SUG Town Hall Meeting \u2014 Details Soon', excerpt: 'The SUG President will convene a Town Hall for all students. Date, venue, and agenda will be announced on this portal. Stay tuned.', date: '2025-06-01', category: 'announcement', author: '', image: '' },
+  ];
+  let spotlightIndex = 0;
+  let spotlightTimer = null;
+
+  function renderSpotlight() {
+    const track = document.getElementById('spotlight-track');
+    const dots = document.getElementById('spotlight-dots');
+    if (!track || !dots) return;
+
+    track.innerHTML = allUpdates.map(u => {
+      const tag = tagMap[u.category] || tagMap.announcement;
+      const iconContent = u.image ? `<img src="${u.image}" alt="">` : tag.icon;
+      const div = document.createElement('div');
+      div.className = 'spotlight-slide';
+      div.innerHTML = `
+        <div class="spotlight-icon">${iconContent}</div>
+        <div class="spotlight-text">
+          <span class="spotlight-tag" style="background:var(${
+            tag.cls === 'tag-event' ? '--teal' : tag.cls === 'tag-achievement' ? '--green' : tag.cls === 'tag-notice' ? '--orange' : '--navy'
+          })">${tag.label}</span>
+          <div class="spotlight-title"></div>
+          <div class="spotlight-excerpt"></div>
+        </div>`;
+      div.querySelector('.spotlight-title').textContent = u.title;
+      div.querySelector('.spotlight-excerpt').textContent = u.excerpt || '';
+      return div.outerHTML;
+    }).join('');
+
+    dots.innerHTML = allUpdates.map((_, i) => `<span data-i="${i}"></span>`).join('');
+    dots.querySelectorAll('span').forEach(dot => {
+      dot.addEventListener('click', () => goToSpotlight(parseInt(dot.dataset.i, 10)));
+    });
+
+    spotlightIndex = 0;
+    updateSpotlightPosition();
+    restartSpotlightTimer();
+  }
+
+  function updateSpotlightPosition() {
+    const track = document.getElementById('spotlight-track');
+    const dots = document.getElementById('spotlight-dots');
+    if (!track || !allUpdates.length) return;
+    track.style.transform = `translateX(-${spotlightIndex * 100}%)`;
+    if (dots) {
+      dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === spotlightIndex));
+    }
+  }
+
+  function goToSpotlight(i) {
+    spotlightIndex = i;
+    updateSpotlightPosition();
+    restartSpotlightTimer();
+  }
+
+  function advanceSpotlight() {
+    if (!allUpdates.length) return;
+    spotlightIndex = (spotlightIndex + 1) % allUpdates.length;
+    updateSpotlightPosition();
+  }
+
+  function restartSpotlightTimer() {
+    if (spotlightTimer) clearInterval(spotlightTimer);
+    if (allUpdates.length > 1) {
+      spotlightTimer = setInterval(advanceSpotlight, 4500);
+    }
+  }
+
+  renderSpotlight();
+
+  async function loadUpdatesFromServer() {
+    try {
+      const res = await fetch('/.netlify/functions/updates-list');
+      if (!res.ok) return;
+      const updates = await res.json();
+      if (!Array.isArray(updates) || updates.length === 0) return;
+
+      // Always show the newest update first, based on its date field
+      updates.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      const grid = document.getElementById('updates-grid');
+      const featured = updates.find(u => u.featured) || updates[0];
+      const rest = updates.filter(u => u.id !== featured.id);
+
+      renderFeatured(featured);
+      rest.forEach(u => grid.insertBefore(renderUpdateCard(u), grid.firstChild));
+
+      tickerHeadlines = updates.slice(0, 6).map(u => u.title);
+      renderTicker();
+
+      allUpdates = updates;
+      renderSpotlight();
+    } catch (err) {
+      console.warn('Could not load updates from backend:', err);
+    }
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    loadUpdatesFromServer().finally(openSharedUpdateIfPresent);
+  });
+
+  // ── Share a single update via a direct link ─────────────
+  function shareUpdate(id, title) {
+    if (!id) {
+      alert('This update isn\u2019t shareable yet — only updates posted through the admin panel get a link.');
+      return;
+    }
+    const url = `${location.origin}${location.pathname}?update=${encodeURIComponent(id)}#updates`;
+    if (navigator.share) {
+      navigator.share({ title: title || 'SUG SUMAS Update', url }).catch(() => {});
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url)
+        .then(() => showShareToast('Link copied to clipboard ✅'))
+        .catch(() => prompt('Copy this link to share:', url));
+    } else {
+      prompt('Copy this link to share:', url);
+    }
+  }
+
+  function showShareToast(message) {
+    let toast = document.getElementById('share-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'share-toast';
+      toast.className = 'share-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('visible');
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove('visible'), 2400);
+  }
+
+  // Opening a shared link (?update=<id>) jumps straight to that update on
+  // the Updates page and pulses a highlight around its card so it's easy
+  // to spot among the others.
+  function openSharedUpdateIfPresent() {
+    const id = new URLSearchParams(window.location.search).get('update');
+    if (!id) return;
+    showPage(null, 'updates');
+    setTimeout(() => {
+      let target = document.querySelector(`.update-card[data-id="${CSS.escape(id)}"]`);
+      if (!target) {
+        const fc = document.getElementById('featured-card');
+        if (fc && fc.dataset.id === id) target = fc;
+      }
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('update-highlight');
+        setTimeout(() => target.classList.remove('update-highlight'), 3600);
+      }
+    }, 350);
+  }
+
+  // ── Delete an update (officers only) ─────────────────────
+  async function deleteUpdate(id, cardEl) {
+    const currentUser = window.netlifyIdentity && netlifyIdentity.currentUser();
+    if (!currentUser) {
+      alert('Please log in as an admin before deleting an update.');
+      return;
+    }
+    if (!confirm('Delete this update? This can\u2019t be undone.')) return;
+
+    try {
+      const token = currentUser.token.access_token;
+      const res = await fetch('/.netlify/functions/updates-delete', {
+        method: 'POST', // updates-delete.js expects POST (not the DELETE verb) — see its own header comment
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify({ id }),
+      });
+      if (!res.ok) {
+        const result = await res.json().catch(() => ({}));
+        throw new Error(result.error || 'Failed to delete update.');
+      }
+
+      allUpdates = allUpdates.filter(u => u.id !== id);
+
+      if (cardEl && cardEl.id === 'featured-card') {
+        if (allUpdates.length > 0) {
+          const next = allUpdates[0];
+          allUpdates = allUpdates.filter(u => u.id !== next.id);
+          renderFeatured(next);
+        } else {
+          cardEl.style.display = 'none';
+        }
+      } else if (cardEl) {
+        cardEl.remove();
+      }
+
+      tickerHeadlines = allUpdates.length
+        ? allUpdates.slice(0, 6).map(u => u.title)
+        : ['Welcome to the new SUG SUMAS Official Website'];
+      renderTicker();
+      renderSpotlight();
+      showShareToast('Update deleted');
+      document.getElementById('update-modal').classList.remove('open');
+    } catch (err) {
+      alert(err.message || 'Something went wrong deleting this update.');
+    }
+  }
+
+  async function postUpdate() {
+    const currentUser = window.netlifyIdentity && netlifyIdentity.currentUser();
+    if (!currentUser) {
+      alert('Please log in as an admin before publishing an update.');
+      return;
+    }
+
+    const title   = document.getElementById('upd-title').value.trim();
+    const excerpt = document.getElementById('upd-excerpt').value.trim();
+    const category = document.getElementById('upd-cat').value;
+    const author  = document.getElementById('upd-author').value.trim();
+    const date    = document.getElementById('upd-date').value;
+    const featured = document.getElementById('upd-feature').checked;
+    const image = document.getElementById('img-preview').dataset.imageData || '';
+
+    if (!title || !excerpt) { alert('Please fill in Title and Summary before publishing.'); return; }
+
+    const btn = document.querySelector('.form-submit');
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Publishing…';
+
+    try {
+      const token = currentUser.token.access_token;
+      const res = await fetch('/.netlify/functions/updates-create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify({ title, excerpt, category, author, date, featured, image }),
+      });
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error || 'Failed to publish update.');
+
+      // Render the freshly published update immediately instead of
+      // re-fetching the whole list, then reset the form.
+      if (featured) {
+        renderFeatured(result);
+      } else {
+        document.getElementById('updates-grid').insertBefore(renderUpdateCard(result), document.getElementById('updates-grid').firstChild);
+      }
+      tickerHeadlines = [title, ...tickerHeadlines].slice(0, 6);
+      renderTicker();
+
+      allUpdates = [result, ...allUpdates];
+      renderSpotlight();
+
+      ['upd-title','upd-excerpt','upd-author','upd-date'].forEach(id => document.getElementById(id).value = '');
+      const preview = document.getElementById('img-preview');
+      preview.innerHTML = '<span>Click to upload a banner image</span>';
+      preview.classList.remove('has-image');
+      delete preview.dataset.imageData;
+      document.getElementById('upd-cat').value = 'announcement';
+      document.getElementById('upd-feature').checked = false;
+      const msg = document.getElementById('success-msg');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 5000);
+      document.getElementById('updates').scrollIntoView({ behavior: 'smooth' });
+    } catch (err) {
+      alert('Could not publish update: ' + err.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }
+  }
+
+  // ── Voice Out: student feedback via mailto (no backend needed) ──
+  function submitVoiceOut() {
+    const name = document.getElementById('vo-name').value.trim();
+    const department = document.getElementById('vo-department').value.trim();
+    const category = document.getElementById('vo-category').value;
+    const email = document.getElementById('vo-email').value.trim();
+    const office = document.getElementById('vo-office').value;
+    const message = document.getElementById('vo-message').value.trim();
+
+    if (!name || !department || !category || !email || !office || !message) {
+      alert('Every field is required — please fill in your name, department, email, category, office, and message before sending.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    const btn = document.querySelector('#voice-out .form-submit');
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const params = { name, department, category, email, office, message };
+
+    // Sent two ways at once: EmailJS delivers straight to the SUG inbox,
+    // and voiceout-create saves it to the backend so it shows up in the
+    // officers' admin panel too. Each is independent — if one fails, the
+    // other can still succeed, so the student isn't blocked by a single
+    // point of failure.
+    const emailPromise = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+    const savePromise = fetch('/.netlify/functions/voiceout-create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+    }).then(async (res) => {
+      if (!res.ok) {
+        const result = await res.json().catch(() => ({}));
+        throw new Error(result.error || 'Failed to save feedback.');
+      }
+      return res.json();
+    });
+
+    Promise.allSettled([emailPromise, savePromise]).then(([emailResult, saveResult]) => {
+      const emailOk = emailResult.status === 'fulfilled';
+      const saveOk = saveResult.status === 'fulfilled';
+
+      if (!emailOk) console.warn('Voice Out: EmailJS delivery failed:', emailResult.reason);
+      if (!saveOk) console.warn('Voice Out: backend save failed:', saveResult.reason);
+
+      if (emailOk || saveOk) {
+        const msg = document.getElementById('vo-success-msg');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 6000);
+
+        document.getElementById('vo-name').value = '';
+        document.getElementById('vo-department').value = '';
+        document.getElementById('vo-email').value = '';
+        document.getElementById('vo-message').value = '';
+        document.getElementById('vo-category').selectedIndex = 0;
+        document.getElementById('vo-office').selectedIndex = 0;
+      } else {
+        alert('Could not send your feedback right now. Please try again in a moment.');
+      }
+
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    });
+  }
+
+  // ── Voice Out admin panel: load & manage feedback (officers only) ──
+  async function loadVoiceOutFeedback() {
+    const container = document.getElementById('voiceout-list-container');
+    const countEl = document.getElementById('voiceout-count');
+    const currentUser = window.netlifyIdentity && netlifyIdentity.currentUser();
+    if (!currentUser) return;
+
+    try {
+      const token = currentUser.token.access_token;
+      const res = await fetch('/.netlify/functions/voiceout-list', {
+        headers: { 'Authorization': 'Bearer ' + token },
+      });
+      if (!res.ok) {
+        const result = await res.json().catch(() => ({}));
+        throw new Error(result.error || 'Failed to load feedback.');
+      }
+      const feedback = await res.json();
+
+      if (!Array.isArray(feedback) || feedback.length === 0) {
+        countEl.textContent = '';
+        container.innerHTML = '<p style="color:var(--muted);font-size:0.85rem;">No feedback submitted yet.</p>';
+        return;
+      }
+
+      countEl.textContent = `${feedback.length} submission${feedback.length === 1 ? '' : 's'}`;
+      container.innerHTML = '';
+      feedback.forEach(item => container.appendChild(renderVoiceOutItem(item)));
+    } catch (err) {
+      container.innerHTML = `<p style="color:#c0392b;font-size:0.85rem;">Could not load feedback: ${err.message}</p>`;
+    }
+  }
+
+  function renderVoiceOutItem(item) {
+    const div = document.createElement('div');
+    div.className = 'voiceout-item';
+    div.dataset.id = item.id;
+
+    const date = item.createdAt ? new Date(item.createdAt).toLocaleString() : '';
+
+    div.innerHTML = `
+      <div class="voiceout-item-head">
+        <span class="voiceout-tag">${escapeHtml(item.category || 'Other')}</span>
+        <button class="voiceout-delete-btn" onclick="deleteVoiceOutFeedback('${item.id}', this)">🗑 Delete</button>
+      </div>
+      <div class="voiceout-meta">
+        <strong>${escapeHtml(item.name || 'Unknown')}</strong> · ${escapeHtml(item.department || '')}<br>
+        📧 ${escapeHtml(item.email || '')} &nbsp;·&nbsp; 🏛️ Directed to: <strong>${escapeHtml(item.office || '')}</strong><br>
+        🕐 ${escapeHtml(date)}
+      </div>
+      <div class="voiceout-message">${escapeHtml(item.message || '')}</div>
+    `;
+    return div;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ── URL detection for update write-ups ──────────────────────────
+  // Turns any plain-text link an officer types into a clickable one, and
+  // if that link is a YouTube or Vimeo URL, embeds it as a playable video
+  // right in the "Read more" modal — no separate upload or extra field
+  // needed, it's detected straight out of the description text.
+  function linkifyText(text) {
+    const escaped = escapeHtml(text || '');
+    const urlPattern = /(https?:\/\/[^\s<]+)/g;
+    return escaped.replace(urlPattern, (match) => {
+      const trailing = (match.match(/[.,;:!?)\]]+$/) || [''])[0];
+      const url = trailing ? match.slice(0, -trailing.length) : match;
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${trailing}`;
+    });
+  }
+
+  function extractVideoEmbed(text) {
+    if (!text) return '';
+    const yt = text.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    if (yt) {
+      return `<iframe src="https://www.youtube.com/embed/${yt[1]}" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+    }
+    const vimeo = text.match(/vimeo\.com\/(\d+)/);
+    if (vimeo) {
+      return `<iframe src="https://player.vimeo.com/video/${vimeo[1]}" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+    }
+    return '';
+  }
+
+  async function deleteVoiceOutFeedback(id, btnEl) {
+    const currentUser = window.netlifyIdentity && netlifyIdentity.currentUser();
+    if (!currentUser) {
+      alert('Please log in as an admin before deleting feedback.');
+      return;
+    }
+    if (!confirm('Delete this feedback? This can\u2019t be undone.')) return;
+
+    try {
+      const token = currentUser.token.access_token;
+      const res = await fetch('/.netlify/functions/voiceout-delete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify({ id }),
+      });
+      if (!res.ok) {
+        const result = await res.json().catch(() => ({}));
+        throw new Error(result.error || 'Failed to delete feedback.');
+      }
+      const item = btnEl.closest('.voiceout-item');
+      if (item) item.remove();
+
+      const container = document.getElementById('voiceout-list-container');
+      const countEl = document.getElementById('voiceout-count');
+      const remaining = container.querySelectorAll('.voiceout-item').length;
+      countEl.textContent = remaining ? `${remaining} submission${remaining === 1 ? '' : 's'}` : '';
+      if (!remaining) container.innerHTML = '<p style="color:var(--muted);font-size:0.85rem;">No feedback submitted yet.</p>';
+    } catch (err) {
+      alert(err.message || 'Something went wrong deleting this feedback.');
+    }
+  }
+
+  // ── Close mobile menu on nav link click ────
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // ── Updates nav dropdown (News / Opportunities) ─────────
+  function toggleNavDropdown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const dropdown = document.getElementById('updates-nav-dropdown');
+    const isOpen = dropdown.classList.toggle('open');
+    dropdown.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  function closeNavDropdown() {
+    const dropdown = document.getElementById('updates-nav-dropdown');
+    dropdown.classList.remove('open');
+    dropdown.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
+  }
+  document.addEventListener('click', (e) => {
+    const dropdown = document.getElementById('updates-nav-dropdown');
+    if (dropdown && !dropdown.contains(e.target)) closeNavDropdown();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNavDropdown();
+  });
+
+  // ── App pages: Home is the landing page. Updates / Leadership /
+  //    About / Contact are separate pages that only appear when their
+  //    nav button is clicked — they are not stacked on the same
+  //    scrolling page as Home.
+  function showPage(e, id) {
+    if (e) e.preventDefault();
+    document.querySelectorAll('.app-page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
+    if (id === 'leadership') setTimeout(triggerLightning, 60);
+
+    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+    document.getElementById('updates-nav-dropdown')?.querySelector('.nav-dropdown-trigger').classList.remove('active');
+    if (e && e.currentTarget) {
+      if (e.currentTarget.classList.contains('nav-dropdown-trigger')) {
+        // no-op: trigger itself isn't a page link
+      } else {
+        e.currentTarget.classList.add('active');
+      }
+    }
+    if (id === 'updates') {
+      document.getElementById('updates-nav-dropdown')?.querySelector('.nav-dropdown-trigger').classList.add('active');
+    }
+
+    document.querySelector('.nav-links').classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Re-run reveal animations for the newly shown page
+    target?.querySelectorAll('.reveal').forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  }
+
+  // ── Scroll reveal ──────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.01, rootMargin: '0px 0px 600px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Animated stat counters ──────────────────
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el) {
+    const target = parseInt(el.dataset.countTo, 10);
+    const suffix = el.dataset.suffix || '';
+    if (reduceMotion || isNaN(target)) { el.textContent = target.toLocaleString() + suffix; return; }
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCount(e.target); counterObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('[data-count-to]').forEach(el => counterObserver.observe(el));
+
+  // Set today as default date
+  document.getElementById('upd-date').value = new Date().toISOString().split('T')[0];
+
+  // Social buttons (WhatsApp/Facebook) on person cards have been removed.
+</script>
+</body>
+</html>
